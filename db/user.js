@@ -1,5 +1,4 @@
 
-//### Requires ###\\
 const mongoose = require('mongoose')
 
 //### Create mongo models ###\\
