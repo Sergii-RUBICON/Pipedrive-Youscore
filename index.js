@@ -39,7 +39,6 @@ app.get('/auth/pipedrive/callback', passport.authenticate('pipedrive', {
 
 app.use(passport.initialize())
 
-//### New authorization with Pipedrive ###\\
 passport.use(
     'pipedrive',
     new OAuth2Strategy({
