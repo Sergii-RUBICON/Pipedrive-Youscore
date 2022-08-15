@@ -1,7 +1,7 @@
 
 
 require('dotenv').config()
-//### Requires ###\\
+
 const express = require('express')
 const passport = require('passport')
 const OAuth2Strategy = require('passport-oauth').OAuth2Strategy
@@ -13,10 +13,8 @@ const fs = require('fs')
 const mainRouter = require('./src/routers/main')
 const setupExpress = require('./src/setupExpress')
 
-//### App start ###\\
 const app = express()
 
-//### Connect to DB ###\\
 connectMongo.main()
 
 fs.readFile('companyDomain.txt', (err, data) => {
