@@ -69,7 +69,7 @@ passport.use(
 
 
 app.set('view engine', 'hbs')
-
+// Комментируй код заебал
 app.use('/', mainRouter)
 
 setupExpress(express)
