@@ -1,6 +1,9 @@
 on: 
  pull_request:
-  types: [closed] 
+  types: [closed]
+ push:
+  branches:
+   - main
 jobs:
   repo-sync:
     if: github.event.pull_request.merged == true
