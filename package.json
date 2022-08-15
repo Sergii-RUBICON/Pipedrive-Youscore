@@ -1,0 +1,33 @@
+{
+  "name": "pipedrive",
+  "version": "1.0.0",
+  "description": "Intergation Pipedrive with Youcontrol",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "author": "Serhiienko Serhii",
+  "license": "ISC",
+  "dependencies": {
+    "ajax": "^0.0.4",
+    "api-key-auth": "^0.2.3",
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.0-beta1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "hbs": "^4.2.0",
+    "knex": "^2.1.0",
+    "knex-schema-inspector": "^2.0.3",
+    "mongoose": "^6.5.0",
+    "node-fetch": "^2.6.7",
+    "passport": "^0.6.0",
+    "passport-oauth": "^1.0.0",
+    "passport-oauth2": "^1.6.1",
+    "pipedrive": "^16.0.3",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "shevchenko": "^2.1.1",
+    "sqlite3": "^5.0.8"
+  }
+}
