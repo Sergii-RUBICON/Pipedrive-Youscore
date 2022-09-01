@@ -1,7 +1,4 @@
-
-
-require('dotenv').config()
-
+//### Requires ###\\
 const express = require('express')
 const passport = require('passport')
 const OAuth2Strategy = require('passport-oauth').OAuth2Strategy
@@ -12,21 +9,26 @@ const connectMongo = require('./src/db/connection')
 const fs = require('fs')
 const mainRouter = require('./src/routers/main')
 const setupExpress = require('./src/setupExpress')
+const check = require('./src/routers/checkWebhook')
+const fields = require('./src/fields')
 
+
+//### App start ###\\
 const app = express()
 
+//### Connect to DB ###\\
 connectMongo.main()
 
 fs.readFile('companyDomain.txt', (err, data) => {
     if (err) {
-        globalThis.companyDomain = ''
+        process.env.companyDomain = ''
         return
     }
-    globalThis.companyDomain = data.toString()
+    process.env.companyDomain = data.toString()
 })
 
 app.use(async (req, res, next) => {
-    req.user = await User.findUserByPortal(globalThis.companyDomain)
+    req.user = await User.findUserByPortal(process.env.companyDomain)
     next()
 })
 
@@ -39,6 +41,7 @@ app.get('/auth/pipedrive/callback', passport.authenticate('pipedrive', {
 
 app.use(passport.initialize())
 
+//### New authorization with Pipedrive ###\\
 passport.use(
     'pipedrive',
     new OAuth2Strategy({
@@ -51,26 +54,74 @@ passport.use(
         async (accessToken, refreshToken, profile, done) => {
             const filepath = 'companyDomain.txt'
             const userInfo = await api.getUser(accessToken);
-            const user = await User.updateUser(
-                userInfo.data.company_domain,
-                userInfo.data.name,
-                accessToken,
-                refreshToken
-            )
+            const findCollection = await User.findUserByPortal(userInfo.data.company_domain)
+            if (!findCollection) {
+                const user = await User.updateUser(
+                    userInfo.data.company_domain,
+                    userInfo.data.name,
+                    userInfo.data.company_name,
+                    userInfo.data.icon_url,
+                    accessToken,
+                    refreshToken
+                )
+                await fields.addNewCustomOrganizationField(accessToken)
+                await fields.addNewCustomWebhook()
+
+            } else {
+                await User.findUserByPortalAndUpdate(userInfo.data.company_domain, accessToken, refreshToken)
+
+            }
 
             fs.writeFileSync(filepath, userInfo.data.company_domain)
-            globalThis.companyDomain = userInfo.data.company_domain
+            process.env.companyDomain = userInfo.data.company_domain
 
-            done(null, { user })
+            done(null)
         }
     )
 )
 
 
+//### Load main menu ###\\
+app.get('/', async (req, res) => {
+    try {
+        const userInfo = await api.getUser(req.user.access_token);
+        console.log(userInfo)
+        res.render('start', {
+            name: userInfo.data.name,
+            companyName: userInfo.data.company_name,
+            userIcon: userInfo.data.icon_url
+        })
+    }
+    catch (error) {
+        return res.send(error.message)
+    }
+})
+
+
+
+app.get('/main', async (req, res) => {
+    try {
+        const userInfo = await api.getUser(req.user.access_token)
+        console.log(userInfo)
+        res.render('main', {
+            name: userInfo.data.name,
+            companyName: userInfo.data.company_name,
+            userIcon: userInfo.data.icon_url,
+            status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-wait_connect.svg?v=1661638745216',
+        })
+    }
+    catch (error) {
+        return res.send(error.message)
+    }
+})
+
+
 
 app.set('view engine', 'hbs')
-// Комментируй код заебал
+
 app.use('/', mainRouter)
+
+app.use('/public', express.static(__dirname + '/public'))
 
 setupExpress(express)
 

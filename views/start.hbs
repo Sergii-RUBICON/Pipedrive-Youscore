@@ -1,7 +1,6 @@
 
-
 <body>
-
+<script defer src="public/js/start.js"></script>
 <header class="header">
     <div class="container">
         <div class="header_wrapper">
@@ -70,38 +69,12 @@
     </div>
 </header>
 
-<div class="page main">
-
-    <div class="youscore_logo">
-        <img src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/youscore_logo.svg?v=1661638750089">
+<div class="page animation">
+    <div class="hello_block">
+        <h1 class="hello_text_start">Привіт 👋🏻</h1>
+        <h3 class="hello_text_description">Вітаємо в додатку для Pipedrive:
+            Автозаповнення реквізитів з YouControl</h3>
     </div>
-
-    <div class="send_key">
-
-        <form  method="post" action="/" class="send_key_to_youscore">
-
-            <label for="code" class="send_key_text">Введіть API-ключ сервісу YouScore</label>
-            <input type="text" class="send_key_input" id="code" name="code">
-            <input type="submit" value="Перевірити ключ" class="send_value">
-
-            <p class="send_key_description">
-                <b>Не можете знайти ключ? Скористайтесь <a class="instruction" href="#">інструкцією</a></b>
-            </p>
-        </form>
-
-        <div class="status_key">
-            <p class="send_key_status">Статус підключення: <img src="{{status}}">
-            </p>
-        </div>
-    </div>
-
-    <div class="next">
-        <a href="end.html">
-            <img src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/next.svg?v=1661638729232">
-        </a>
-
-    </div>
-
 </div>
 
 <div class="circles">

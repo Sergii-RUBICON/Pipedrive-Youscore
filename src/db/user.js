@@ -6,6 +6,8 @@ const mongoose = require('mongoose')
 const Users = mongoose.model('Users', {
     portal: {type: String},
     username: {type: String},
+    company_name: {type: String},
+    icon_url: {type: String},
     access_token: {type: String},
     refresh_token: {type: String},
     api_key: {type: String}
@@ -26,10 +28,12 @@ const yKey = mongoose.model('yKey', {
 })
 
 //### Add new collections ###\\
-async function updateUser (portal,username, access_token, refresh_token, api_key) {
+async function updateUser (portal, username, company_name, icon_url, access_token, refresh_token, api_key) {
     const createdUser = new Users({
         portal: portal,
         username: username,
+        company_name: company_name,
+        icon_url: icon_url,
         access_token:  access_token,
         refresh_token: refresh_token,
         api_key:  api_key,
@@ -66,6 +70,18 @@ async function findUserByPortal (companyDomain) {
     return user
 }
 
+async function findUserByPortalAndUpdate (companyDomain, accessToken, refreshToken) {
+    const filter = {portal: companyDomain}
+    const update = {
+        access_token: accessToken,
+        refresh_token: refreshToken
+    }
+
+    await Users.findOneAndUpdate(filter, update, {
+        new: true
+    })
+}
+
 async function findFieldsByPortal (companyDomain) {
     const fieldsKey = await fields.findOne({Portal: companyDomain})
     return fieldsKey
@@ -76,6 +92,18 @@ async function findYKeyByPortal (companyDomain) {
     return key
 }
 
+async function findYKeyByPortalAndUpdate (portal, api_key) {
+    const filter = {portal: portal}
+    const update = {
+        portal: portal,
+        Y_api_key:  api_key,
+    }
+
+    await yKey.findOneAndUpdate(filter, update, {
+        new: true
+    })
+}
+
 
 //### Exports ###\\
 module.exports = {
@@ -83,8 +111,10 @@ module.exports = {
     updateFields,
     updateDBKey,
     findUserByPortal,
+    findUserByPortalAndUpdate,
     findFieldsByPortal,
-    findYKeyByPortal
+    findYKeyByPortal,
+    findYKeyByPortalAndUpdate
 }
 
 
