@@ -4,8 +4,8 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    console.log(`Інформація про платіж: ${req}`)
-    console.log(`Інформація про платіж: ${res}`)
+    console.log(`Інформація про платіж: ${req.body}`)
+    console.log(`Інформація про платіж: ${res.body}`)
     res.end()
 }
 
