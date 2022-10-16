@@ -3,10 +3,10 @@ const User = require('../db/user')
 const fields = require('../fields')
 
 
-async function checkSub(request, responce) {
-    console.log(`Інформація про платіж: ${request}`)
-    console.log(`Інформація про платіж: ${responce}`)
-    responce.end()
+async function checkSub(req, res) {
+    console.log(`Інформація про платіж: ${req}`)
+    console.log(`Інформація про платіж: ${res}`)
+    res.end()
 }
 
 
