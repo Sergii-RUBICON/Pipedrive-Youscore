@@ -2,7 +2,7 @@
 //### Requires ###\\
 const db = require('./db/user')
 const pipedrive = require('pipedrive')
-const Api = require('./api')
+const Api = require('./api.js')
 const defaultClient = pipedrive.ApiClient.instance
 const shevchenko = require('shevchenko')
 
@@ -15,7 +15,7 @@ async function addNewCustomOrganizationField(accessToken) {
 
     const fields = ([
         {
-            name: 'Код ЄДРПО/РНОКПП',
+            name: 'Код ЄДРПОУ/РНОКПП',
             field_type: 'double'
         },
         {
@@ -60,7 +60,7 @@ async function addNewCustomOrganizationField(accessToken) {
             arrayKeys[2],
             arrayKeys[3],
             arrayKeys[4],
-            )
+        )
     }
 }
 
@@ -69,13 +69,14 @@ async function addNewCustomWebhook() {
 
     const webhook =
         {
-            subscription_url: 'https://boiled-profuse-soapwort.glitch.me/checkWebhook',
+            subscription_url: 'https://pipedrive-integration-with-youscore.glitch.me/checkWebhook',
             event_action: 'updated',
             event_object: 'organization'
         }
     let isWebhookCreated = false
     const api = new pipedrive.WebhooksApi()
-    const response = await api.getWebhook()
+    console.log(api)
+    const response = await api.getWebhooks()
     const webhooks = response.data
 
     for (const i of webhooks) {
@@ -182,7 +183,7 @@ async function addNote (connectStatus, currentEDRPO, orgID) {
 
 //### Update values on custom fields ###\\
 async function updateFields (companyNameY, nameDirectorY, shortNameY, infoForContractY, id, name,
-                              pipeCompanyName, pipeNameDirector, pipeShortName, pipeInfoForContract) {
+                             pipeCompanyName, pipeNameDirector, pipeShortName, pipeInfoForContract) {
 
     let opts = pipedrive.BasicOrganization.constructFromObject({
         name: name

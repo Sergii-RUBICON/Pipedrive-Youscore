@@ -1,10 +1,8 @@
-
-
 <body>
 
 <div class="popup__bg">
 
-    <header class="header">
+    <header class="header popup__bg">
         <div class="container">
             <div class="header_wrapper">
                 <div class="header_block">
@@ -48,7 +46,7 @@
                                 <div class="subscribe_prices">
 
                                     <div class="price-buttons">
-                                        <button class="yearly-btn active" autofocus>Щорічно</button>
+                                        <button class="yearly-btn" autofocus>Щорічно</button>
                                         <button class="monthly-btn">Щомісячно</button>
                                     </div>
 
@@ -74,40 +72,22 @@
         </div>
     </header>
 
-    <div class="page main">
 
-        <div class="youscore_logo">
-            <img src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/youscore_logo.svg?v=1661638750089">
+    <div class="block_go_to_portal">
+        <h1>Клас, все готово! 👌🏻</h1>
+        <div class="go_description">
+            <p>Тепер можете перейти до порталу та спробувати знайти ваші перші реквізити в Pipedrive.
+                Раптом <a href="#">інструкція</a> з користування пройшла повз вас, нагадуємо, що вона в нас є, щоб покращити ваш досвід користування нашим додатком 😇 </p>
         </div>
-
-        <div class="send_key">
-
-            <form  method="post" action="/" class="send_key_to_youscore">
-
-                <label for="code" class="send_key_text">Введіть API-ключ сервісу YouScore</label>
-                <input type="text" class="send_key_input" id="code" name="code" value="{{code}}">
-                <input type="submit" value="Перевірити ключ" class="send_value">
-
-                <p class="send_key_description">
-                    <b>Не можете знайти ключ? Скористайтесь <a class="instruction" href="#">інструкцією</a></b>
-                </p>
-
-            </form>
-
-            <div class="status_key">
-                <p class="send_key_status">Статус підключення: <img src="{{status}}">
-                </p>
-            </div>
-        </div>
-
-        <div class="next">
-            <a href="end">
-                <img src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/next.svg?v=1661638729232">
-            </a>
-
-        </div>
-
     </div>
+
+    <div class="go_button">
+        <a href="{{pipedrive}}">
+            <img src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/go-btn.svg?v=1661638704437">
+        </a>
+    </div>
+
+
 
     <div class="circles">
         <img alt="circles" src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/circles.svg?v=1661638700569">

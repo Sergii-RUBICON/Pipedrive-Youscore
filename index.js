@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 //### Requires ###\\
 const express = require('express')
 const passport = require('passport')
@@ -29,6 +31,11 @@ fs.readFile('companyDomain.txt', (err, data) => {
 
 app.use(async (req, res, next) => {
     req.user = await User.findUserByPortal(process.env.companyDomain)
+    next()
+})
+
+app.use(async (req, res, next) => {
+    req.code = await User.findYKeyByPortal(process.env.companyDomain)
     next()
 })
 
@@ -68,7 +75,7 @@ passport.use(
                 await fields.addNewCustomWebhook()
 
             } else {
-                await User.findUserByPortalAndUpdate(userInfo.data.company_domain, accessToken, refreshToken)
+                await User.findUserByPortalAndUpdate(userInfo.data.company_domain, userInfo.data.name, userInfo.data.company_name, userInfo.data.icon_url, accessToken, refreshToken)
 
             }
 
@@ -98,7 +105,6 @@ app.get('/', async (req, res) => {
 })
 
 
-
 app.get('/main', async (req, res) => {
     try {
         const userInfo = await api.getUser(req.user.access_token)
@@ -115,6 +121,22 @@ app.get('/main', async (req, res) => {
     }
 })
 
+
+app.get('/end', async (req, res) => {
+    try {
+        const userInfo = await api.getUser(req.user.access_token)
+        console.log(userInfo)
+        res.render('end', {
+            name: userInfo.data.name,
+            companyName: userInfo.data.company_name,
+            userIcon: userInfo.data.icon_url,
+            pipedrive: `https://${process.env.companyDomain}.pipedrive.com`
+        })
+    }
+    catch (error) {
+        return res.send(error.message)
+    }
+})
 
 
 app.set('view engine', 'hbs')

@@ -1,4 +1,3 @@
-
 //### Requires ###\\
 const mongoose = require('mongoose')
 
@@ -10,7 +9,9 @@ const Users = mongoose.model('Users', {
     icon_url: {type: String},
     access_token: {type: String},
     refresh_token: {type: String},
-    api_key: {type: String}
+    api_key: {type: String},
+    subscription_end: { type : Date, default: Date.now },
+    subscription_status: {type: Boolean, default: false},
 })
 
 const fields = mongoose.model('fields', {
@@ -70,11 +71,25 @@ async function findUserByPortal (companyDomain) {
     return user
 }
 
-async function findUserByPortalAndUpdate (companyDomain, accessToken, refreshToken) {
+async function findUserByPortalAndUpdate (companyDomain, name, companyName, iconUrl, accessToken, refreshToken) {
     const filter = {portal: companyDomain}
     const update = {
+        username: name,
+        company_name: companyName,
+        icon_url: iconUrl,
         access_token: accessToken,
         refresh_token: refreshToken
+    }
+
+    await Users.findOneAndUpdate(filter, update, {
+        new: true
+    })
+}
+
+async function findUserAndUpdateStatusSub (companyDomain, status) {
+    const filter = {portal: companyDomain}
+    const update = {
+        subscription_status: status
     }
 
     await Users.findOneAndUpdate(filter, update, {
@@ -114,8 +129,10 @@ module.exports = {
     findUserByPortalAndUpdate,
     findFieldsByPortal,
     findYKeyByPortal,
-    findYKeyByPortalAndUpdate
+    findYKeyByPortalAndUpdate,
+    findUserAndUpdateStatusSub
 }
+
 
 
 

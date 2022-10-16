@@ -10,9 +10,10 @@ const router = express()
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(express.static(path.join(__dirname, 'public')))
 
+
 router.post('/createFields', createFields)
 router.post('/createWebhook', createWebhook)
-router.post('/connect', connectRouter)
+router.post('/', connectRouter)
 router.post('/checkWebhook', bodyParser.json(), checkWebhook)
 
 module.exports = router

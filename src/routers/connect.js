@@ -10,7 +10,7 @@ async function connect(req, res) {
     try {
         if (!code) {
             res.render('main', {
-                status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-not_connexted.svg?v=1661638740973'
+                status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-not_connexted.svg?v=1661638740973',
             })
         }
         const response = await api.checkConnect(code)
@@ -25,12 +25,12 @@ async function connect(req, res) {
                 await User.findYKeyByPortalAndUpdate(process.env.companyDomain, code)
             }
             res.render('main', {
-                status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-connected.svg?v=1661638736324'
+                status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-connected.svg?v=1661638736324',
             })
 
         } else {
             res.render('main', {
-                status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-not_connexted.svg?v=1661638740973'
+                status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-not_connexted.svg?v=1661638740973',
             })
         }}
     catch(e) {

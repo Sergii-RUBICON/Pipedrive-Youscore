@@ -4,10 +4,21 @@
 body {
     padding: 0;
     margin: 0;
-    height: 100%;
     overflow:  hidden;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
+}
+
+.popup__bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.popup__bg.opened {
+    pointer-events: all;
 }
 
 .header {
@@ -54,6 +65,7 @@ body {
 .dropdown_header_1st {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     font-weight: 400;
     font-size: 0.9rem;
 }
@@ -68,6 +80,7 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
+    align-items: flex-end;
     margin-top: 1rem;
 }
 
@@ -152,18 +165,17 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 
-.price-buttons button:focus {
-    background: #E8EDFF;
-}
-
-.monthly-btn {
+.yearly-btn {
     border-radius: 0.4rem 0 0 0.4rem;
 }
 
-.yearly-btn {
+.monthly-btn {
     border-radius:0 0.4rem 0.4rem 0;
 }
 
+button.active {
+    background: #E8EDFF;
+}
 
 .price {
     position: absolute;
@@ -213,7 +225,7 @@ input:checked + .slider:before {
 
 .banks {
     position: absolute;
-    top: 102%;
+    top: 99%;
     right: 25%;
 }
 
@@ -280,7 +292,7 @@ input:checked + .slider:before {
 }
 
 .user_settings:hover {
-    animation: rot-settings 1s ease-in-out 0s infinite
+    animation: rot-settings 1s ease-in-out 0s
 }
 
 @keyframes rot-settings {
@@ -436,5 +448,30 @@ input {outline: none;}
     display: inline-block;
 }
 
+.block_go_to_portal {
+    width: 55rem;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    text-align: center;
+    position: fixed;
+    display: flex;
+    flex-flow: column wrap;
+    top:40%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
 
+.go_description {
+    margin-top: 4rem;
+    font-size: 1.2rem;
+}
 
+.go_button {
+    position: fixed;
+    display: flex;
+    top:76%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
