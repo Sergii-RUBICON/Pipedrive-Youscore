@@ -4,43 +4,48 @@ const fields = require('../fields')
 
 //### Checking webhook request ###\\
 async function checkWebhook(req, res) {
-    const subscription = await User.findUserByPortal(process.env.companyDomain)
-    let subStatus
 
-    const dateNow = Date.now()
-    const dateSub = Date.parse(subscription.subscription_end)
+    try {
+        const dbFields = await User.findFieldsByPortal(process.env.companyDomain)
+        const dbEDRPO = dbFields.Code_EDRPO_Key
+        const dbCompanynName = dbFields.Company_name_Key
+        const dbNameDirector = dbFields.Name_director_Key
+        const dbShortNameDirector = dbFields.Short_name_director_Key
+        const dbIfoForContract = dbFields.Ifo_for_contract_Key
 
-    if (dateSub < dateNow) {
-        subStatus = false
-        const changeStatusSub = await User.findUserAndUpdateStatusSub (process.env.companyDomain, subStatus)
-        res.end()
-    }
-    else {
-        try {
-            const dbFields = await User.findFieldsByPortal(process.env.companyDomain)
-            const dbEDRPO = dbFields.Code_EDRPO_Key
-            const dbCompanynName = dbFields.Company_name_Key
-            const dbNameDirector = dbFields.Name_director_Key
-            const dbShortNameDirector = dbFields.Short_name_director_Key
-            const dbIfoForContract = dbFields.Ifo_for_contract_Key
+        const previous = req.body.previous
+        const previousEDRPO = previous[dbEDRPO]
+        console.log(`ЄДРПОУ до зміни: ${previousEDRPO}`)
 
-            const previous = req.body.previous
-            const previousEDRPO = previous[dbEDRPO]
-            console.log(`ЄДРПОУ до зміни: ${previousEDRPO}`)
+        const current = req.body.current
+        const currentEDRPO = current[dbEDRPO]
+        console.log(`ЄДРПОУ після зміни: ${currentEDRPO}`)
 
-            const current = req.body.current
-            const currentEDRPO = current[dbEDRPO]
-            console.log(`ЄДРПОУ після зміни: ${currentEDRPO}`)
+        if (currentEDRPO != previousEDRPO) {
+            console.log('Зміна відбулася у полі ЄДРПОУ')
+            let connectStatus = null
+            let companyNameUse = null
+            let subStatus = null
 
-            if (currentEDRPO != previousEDRPO) {
-                console.log('Зміна відбулася у полі ЄДРПОУ')
-                let connectStatus
-                let companyNameUse
+            const sub = await User.findUserByPortal(process.env.companyDomain)
+            const dateNow = Date.now() // Якщо робити перевірку через дату також
+            const dateSub = Date.parse(sub.subs_end)
 
-                const orgID = current.id
-                console.log(`Id організації з вебхука : ` + orgID)
-                const orgName = current.name
-                console.log(`Ім'я організація з вебхука : ` + orgName)
+            const orgID = current.id
+            console.log(`Id організації з вебхука : ` + orgID)
+            const orgName = current.name
+            console.log(`Ім'я організація з вебхука : ` + orgName)
+
+            if (!sub.subscription_status || dateNow > dateSub) { // (dateNow > dateSub)
+                subStatus = false
+                const changeStatusSub = await User.findUserAndUpdateStatusSub (process.env.companyDomain, subStatus)
+                console.log('Your subscription not active')
+                await fields.addNote(connectStatus, currentEDRPO, orgID, subStatus)
+                res.end()
+            }
+
+            else if (sub.subscription_status || dateNow < dateSub) { // (dateNow < dateSub)
+
                 if (String(currentEDRPO).length == 8) {
                     console.log('Запит на отримання інфорації по коду ТОВ')
                     try { //41750253
@@ -91,15 +96,19 @@ async function checkWebhook(req, res) {
             }
             else {
                 console.log('Зміна відбулася не в тому полі')
+                res.end()
             }
             console.log(`К-ть повторень вебхука: ${req.body.retry}`)
             res.end()
-
-        } catch (e) {
-            console.log(`Виникла помилка при підключенні: ${e}`)
-            res.end()
         }
+
+        res.end()
+
+    } catch (e) {
+        console.log(`Виникла помилка при підключенні: ${e}`)
+        res.end()
     }
 }
+
 
 module.exports = checkWebhook

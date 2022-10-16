@@ -1,7 +1,7 @@
 
 
 <body>
-
+<script defer src="public/js/checker.js"></script>
 <div class="popup__bg">
 
     <header class="header">
@@ -23,6 +23,8 @@
                             <p class="user_company">{{companyName}}</p>
                         </div>
 
+                        <img class="attention {{attention}}" src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/attention.svg?v=1664370395205">
+
                         <div class="user_settings">
                             <a href="/main">
                                 <input type="image" src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/settings-icn.svg?v=1661638683302">
@@ -33,8 +35,8 @@
                             <div class="dropdown_menu_body">
                                 <br>
                                 <div class="dropdown_header_1st">
-                                    <span>🗓 Підписка дійсна до:</span>
-                                    <span>30.08.2023</span>
+                                    <span class="{{subStatus}}">🗓 Підписка дійсна до:</span>
+                                    <span class="{{subStatus}}">{{subEnd}}</span>
                                 </div>
 
                                 <div class="dropdown_header_2st">
@@ -91,7 +93,6 @@
                 <p class="send_key_description">
                     <b>Не можете знайти ключ? Скористайтесь <a class="instruction" href="#">інструкцією</a></b>
                 </p>
-
             </form>
 
             <div class="status_key">
@@ -100,7 +101,7 @@
             </div>
         </div>
 
-        <div class="next">
+        <div class="next" style="display: {{display}};">
             <a href="end">
                 <img src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/next.svg?v=1661638729232">
             </a>

@@ -6,11 +6,11 @@ async function connect(req, res) {
     console.log('request to getCode')
     const code = req.body.code
 
-
     try {
         if (!code) {
             res.render('main', {
                 status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-not_connexted.svg?v=1661638740973',
+                display: 'none',
             })
         }
         const response = await api.checkConnect(code)
@@ -26,17 +26,21 @@ async function connect(req, res) {
             }
             res.render('main', {
                 status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-connected.svg?v=1661638736324',
+                display: 'block',
+                code: code,
             })
 
         } else {
             res.render('main', {
                 status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-not_connexted.svg?v=1661638740973',
+                display: 'none',
             })
         }}
     catch(e) {
         console.log(e)
         res.render('main', {
             status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-not_connexted.svg?v=1661638740973',
+            display: 'none',
         })
     }
 }

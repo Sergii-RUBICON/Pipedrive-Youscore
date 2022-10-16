@@ -2,7 +2,7 @@
 
 <div class="popup__bg">
 
-    <header class="header popup__bg">
+    <header class="header">
         <div class="container">
             <div class="header_wrapper">
                 <div class="header_block">
@@ -21,6 +21,8 @@
                             <p class="user_company">{{companyName}}</p>
                         </div>
 
+                        <img class="attention {{attention}}" src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/attention.svg?v=1664370395205">
+
                         <div class="user_settings">
                             <a href="/main">
                                 <input type="image" src="https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/settings-icn.svg?v=1661638683302">
@@ -31,8 +33,8 @@
                             <div class="dropdown_menu_body">
                                 <br>
                                 <div class="dropdown_header_1st">
-                                    <span>🗓 Підписка дійсна до:</span>
-                                    <span>30.08.2023</span>
+                                    <span class="{{subStatus}}">🗓 Підписка дійсна до:</span>
+                                    <span class="{{subStatus}}">{{subEnd}}</span>
                                 </div>
 
                                 <div class="dropdown_header_2st">
@@ -46,7 +48,7 @@
                                 <div class="subscribe_prices">
 
                                     <div class="price-buttons">
-                                        <button class="yearly-btn" autofocus>Щорічно</button>
+                                        <button class="yearly-btn active" autofocus>Щорічно</button>
                                         <button class="monthly-btn">Щомісячно</button>
                                     </div>
 

@@ -18,6 +18,13 @@ const fields = require('./src/fields')
 //### App start ###\\
 const app = express()
 
+
+app.use((req, res, next) => {
+    console.log('Request to ' + req.url);
+    next()
+});
+
+
 //### Connect to DB ###\\
 connectMongo.main()
 
@@ -34,10 +41,7 @@ app.use(async (req, res, next) => {
     next()
 })
 
-app.use(async (req, res, next) => {
-    req.code = await User.findYKeyByPortal(process.env.companyDomain)
-    next()
-})
+
 
 app.get('/auth/pipedrive', passport.authenticate('pipedrive'))
 app.get('/auth/pipedrive/callback', passport.authenticate('pipedrive', {
@@ -45,6 +49,7 @@ app.get('/auth/pipedrive/callback', passport.authenticate('pipedrive', {
     failureRedirect: '/',
     successRedirect: '/'
 }))
+
 
 app.use(passport.initialize())
 
@@ -88,6 +93,8 @@ passport.use(
 )
 
 
+
+
 //### Load main menu ###\\
 app.get('/', async (req, res) => {
     try {
@@ -108,12 +115,30 @@ app.get('/', async (req, res) => {
 app.get('/main', async (req, res) => {
     try {
         const userInfo = await api.getUser(req.user.access_token)
+        const timestamp = await User.findUserByPortal(userInfo.data.company_domain)
+        const subDate = await fields.timestampToNormalDate(timestamp.subscription_end, timestamp.subscription_status)
+        const subStatus = await fields.checkSubStatus(timestamp.subscription_end)
         console.log(userInfo)
+
+        const codeDB = await User.findYKeyByPortal(process.env.companyDomain)
+        let code
+
+        if (codeDB) {
+            code = codeDB.Y_api_key
+        }
+        else if (codeDB == null || codeDB == undefined) {
+            code = "Ключ не занйдено"
+        }
         res.render('main', {
             name: userInfo.data.name,
             companyName: userInfo.data.company_name,
             userIcon: userInfo.data.icon_url,
             status: 'https://cdn.glitch.global/1d4ff4b4-546b-4de3-9408-e43a3306387e/status-wait_connect.svg?v=1661638745216',
+            display: 'none',
+            code: code,
+            subEnd: subDate,
+            subStatus: subStatus,
+            attention: subStatus,
         })
     }
     catch (error) {
@@ -125,17 +150,37 @@ app.get('/main', async (req, res) => {
 app.get('/end', async (req, res) => {
     try {
         const userInfo = await api.getUser(req.user.access_token)
+        const timestamp = await User.findUserByPortal(userInfo.data.company_domain)
+        const subDate = await fields.timestampToNormalDate(timestamp.subscription_end, timestamp.subscription_status)
+        const subStatus = await fields.checkSubStatus(timestamp.subscription_end)
+        console.log(userInfo)
         console.log(userInfo)
         res.render('end', {
             name: userInfo.data.name,
             companyName: userInfo.data.company_name,
             userIcon: userInfo.data.icon_url,
-            pipedrive: `https://${process.env.companyDomain}.pipedrive.com`
+            pipedrive: `https://${process.env.companyDomain}.pipedrive.com`,
+            subEnd: subDate,
+            subStatus: subStatus,
+            attention: subStatus,
         })
     }
     catch (error) {
         return res.send(error.message)
     }
+})
+
+
+app.post('/checkSupPay', async (req, res) => {
+    try {
+        console.log(`Інформація про платіж: ${req}`)
+        console.log(`Інформація про платіж: ${res}`)
+        res.end()
+    }
+    catch (e) {
+        console.log(e)
+    }
+
 })
 
 

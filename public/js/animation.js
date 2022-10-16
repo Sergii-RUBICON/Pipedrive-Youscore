@@ -8,8 +8,8 @@ const price_desc = document.querySelector('.price-description')
 const priceEnding = document.querySelector('.price-ending')
 const block_info = document.querySelector('.block_header_info')
 const popupBG = document.querySelector('.popup__bg')
-
 const price = document.querySelector('.price-value')
+
 
 const monthlyPrice = '10'
 const yearlyPrice = '8'
@@ -55,6 +55,7 @@ document.addEventListener('click', (e) => {
         return
     }
 })
+
 
 
 

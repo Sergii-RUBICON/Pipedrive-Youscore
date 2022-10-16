@@ -160,16 +160,18 @@ async function whatGender (firstName) {
 }
 
 //### Adding note to organization on Pipedrive ###\\
-async function addNote (connectStatus, currentEDRPO, orgID) {
-    if (connectStatus === true) {
+async function addNote (connectStatus, currentEDRPO, orgID, subStatus) {
+    if (subStatus === false)  {
         const note =
             {
                 org_id: orgID,
-                content: `Статус підключення за кодом ${currentEDRPO}: Успішно внесена зміна полів`
+                content: `Статус підключення за кодом ${currentEDRPO}: Поповніть буь ласка ваш тарифний план`
             }
         const api = new pipedrive.NotesApi()
         await api.addNote(note)
+        return
     }
+
     else if (connectStatus === false) {
         const note =
             {
@@ -178,6 +180,17 @@ async function addNote (connectStatus, currentEDRPO, orgID) {
             }
         const api = new pipedrive.NotesApi()
         await api.addNote(note)
+        return
+    }
+    else if (connectStatus === true) {
+        const note =
+            {
+                org_id: orgID,
+                content: `Статус підключення за кодом ${currentEDRPO}: Успішно внесена зміна полів`
+            }
+        const api = new pipedrive.NotesApi()
+        await api.addNote(note)
+        return
     }
 }
 
@@ -199,10 +212,37 @@ async function updateFields (companyNameY, nameDirectorY, shortNameY, infoForCon
     await api.updateOrganization(id, opts)
 }
 
+
+async function timestampToNormalDate (date, status) {
+    const options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        timezone: 'UTC'
+    };
+
+    return new Date(date).toLocaleString("ru", options)
+}
+
+
+async function checkSubStatus (date) {
+    const dateNow = Date.now()
+    const dateSub = Date.parse(date)
+
+    if (dateNow > dateSub) {
+        return "inactive"
+    }
+    else {
+        return
+    }
+}
+
 module.exports = {
     addNewCustomOrganizationField,
     addNewCustomWebhook,
     preparationFields,
     addNote,
-    updateFields
+    updateFields,
+    timestampToNormalDate,
+    checkSubStatus
 }
