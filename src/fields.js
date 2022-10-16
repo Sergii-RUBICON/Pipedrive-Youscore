@@ -69,7 +69,7 @@ async function addNewCustomWebhook() {
 
     const webhook =
         {
-            subscription_url: 'https://pipedrive-integration-with-youscore.glitch.me/checkWebhook',
+            subscription_url: 'http://app.rubicon.tips:3000/checkWebhook',
             event_action: 'updated',
             event_object: 'organization'
         }
