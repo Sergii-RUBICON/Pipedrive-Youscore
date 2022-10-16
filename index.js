@@ -170,20 +170,6 @@ app.get('/end', async (req, res) => {
     }
 })
 
-
-app.post('/checkSupPay', async (req, res) => {
-    try {
-        console.log(`Інформація про платіж: ${req}`)
-        console.log(`Інформація про платіж: ${res}`)
-        res.end()
-    }
-    catch (e) {
-        console.log(e)
-    }
-
-})
-
-
 app.set('view engine', 'hbs')
 
 app.use('/', mainRouter)
