@@ -4,14 +4,14 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    console.log(`Інформація про платіж: ${JSON.stringify(req.body)}`)
+    console.log(`Інформація про платіж: ${JSON.parse(req.body)}`)
     console.log(`Інфо про портал: ${req.body.value}`)
-    res.send({
-        orderReference: req.body.orderReference,
-        status: 'accept',
-        time: Date.now(),
-        signature: '',
-    })
+    res.end()
+    //res.send({
+    //    orderReference: req.body.orderReference,
+    //    status: 'accept',
+    //    time: Date.now(),
+    //})
 }
 
 
