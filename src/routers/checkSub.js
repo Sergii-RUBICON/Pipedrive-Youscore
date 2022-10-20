@@ -4,9 +4,7 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    const payInf = JSON.parse(req.body)
-    console.log(`Інформація про платіж: ${payInf}`)
-    console.log(`Інфо про портал: ${payInf.value}`)
+    console.log(`Інфо про портал: ${JSON.parse(JSON.stringify(req.body))}`)
     res.send({
         orderReference: req.body.orderReference,
         status: 'accept',
