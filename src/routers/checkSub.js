@@ -8,7 +8,7 @@ async function checkSub(req, res) {
     const payInfo2st = JSON.parse(payInfo1st)
 
     console.log(`Інформація про платіж: ${payInfo1st}`)
-    console.log(`Інформація про платіж: ${payInfo2st.orderReference}`)
+    console.log(`Інформація про платіж: ${payInfo2st}`)
     console.log(`Інформація про платіж: ${payInfo2st.value}`)
     res.end()
     //res.send({
