@@ -11,7 +11,6 @@ const connectMongo = require('./src/db/connection')
 const fs = require('fs')
 const mainRouter = require('./src/routers/main')
 const setupExpress = require('./src/setupExpress')
-const check = require('./src/routers/checkWebhook')
 const fields = require('./src/fields')
 
 
