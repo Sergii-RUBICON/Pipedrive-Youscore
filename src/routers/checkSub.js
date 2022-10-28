@@ -4,7 +4,6 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    //const payInf = JSON.parse(req.body)
     const str = Object.keys(req.body)[0] + '[]}'
     const payInf = JSON.parse(str)
     console.log(`Інфо про номер товару: ${payInf.orderReference}`)
