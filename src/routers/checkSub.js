@@ -15,10 +15,10 @@ async function checkSub(req, res) {
     console.log(`Інфо про час обробки: ${payInf.processingDate}`)
 
     res.send({
-        orderReference: payInf.orderReference,
-        status: "accept",
-        time: Date.now(),
-        signature: "",
+        "orderReference": `"${payInf.orderReference}"`,
+        "status": "accept",
+        "time": Date.now(),
+        "signature": "",
         })
 }
 
