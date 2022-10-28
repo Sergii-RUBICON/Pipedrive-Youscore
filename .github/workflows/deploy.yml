@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      HOST: 88.218.28.244
+      HOST: 88.218.28.250
       USERNAME: root
       PASSWORD: ${{ secrets.SSH_PASSWORD }}
       PORT: 22
