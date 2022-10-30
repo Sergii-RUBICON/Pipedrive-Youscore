@@ -5,25 +5,21 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
+    console.log(`Фулл тіло запиту ${req.body}`)
 
-    console.log(req.body)
+    console.log(`Мерчант ${req.body.merchantAccount}`)
+    console.log(`Номер ${req.body.orderReference}`)
+    console.log(`Сигнатура ${req.body.merchantSignature}`)
+    console.log(`Сумма ${req.body.amount}`)
+    console.log(`Час обробки ${req.body.processingDate}`)
+    console.log(`Статус оплати ${req.body.transactionStatus}`)
+    console.log(`Портал ${req.body.value}`)
 
-    const str = Object.keys(req.body)[0] + '[]}'
-    const payInf = JSON.parse(str)
-    console.log(`Інфо: ${Object.values(req.body)}`)
-    console.log(JSON.stringify(payInf))
-    console.log(`Номер товару: ${payInf.orderReference}`)
-    console.log(`Назву товару: ${payInf.merchantAccount}`)
-    console.log(`Портал: ${payInf.value}`)
-    console.log(`Сума оплати: ${payInf.amount}`)
-    console.log(`Код відповіді: ${payInf.reasonCode}`)
-    console.log(`Статус відповідіь: ${payInf.reason}`)
-    console.log(`Час обробки: ${payInf.processingDate}`)
 
     let time = Date.now()
 
     res.json({
-        "orderReference": payInf.orderReference,
+        "orderReference": req.body.orderReference,
          "status": "accept",
          "time": time,
          "signature": "",
