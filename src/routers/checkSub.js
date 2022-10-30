@@ -7,7 +7,7 @@ const fields = require('../fields')
 async function checkSub(req, res) {
     console.log(req.body)
     //unescape(JSON.parse('\\u00253A\\u00252F\\u00252...'));
-    const wayJson = req.body
+    const wayJson = JSON.stringify(req.body)
     const json = JSON.parse(wayJson)
     const payInf = JSON.parse(json)
     console.log(payInf)
@@ -27,15 +27,13 @@ async function checkSub(req, res) {
     console.log(req.body.value)
     */
 
-
-    let time = Date.now()
-
-    res.json({
-        "orderReference": req.body.orderReference,
-         "status": "accept",
-         "time": time,
-         "signature": "",
-    })
+    //res.json({
+    //    "orderReference": req.body.orderReference,
+    //     "status": "accept",
+    //     "time": time,
+    //     "signature": "",
+    //})
+    res.end()
 
 
 }
