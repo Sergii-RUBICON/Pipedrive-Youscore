@@ -5,11 +5,8 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    console.log(req.body)
-    //unescape(JSON.parse('\\u00253A\\u00252F\\u00252...'));
-    const wayJson = JSON.stringify(req.body)
-    const json = JSON.parse(wayJson)
-    const payInf = JSON.parse(json)
+    console.log(JSON.stringify(req.body))
+    const payInf = unescape(JSON.parse(req.body));
     console.log(payInf)
 
     /*
