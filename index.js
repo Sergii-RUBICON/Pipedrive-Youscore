@@ -173,6 +173,14 @@ app.set('view engine', 'hbs')
 
 app.use('/', mainRouter)
 
+express.json({
+        limit: '5mb',
+        verify: (req, res, buf) => {
+            req.rawBody = buf.toString()
+        },
+    },
+);
+
 app.use('/public', express.static(__dirname + '/public'))
 
 setupExpress(express)
