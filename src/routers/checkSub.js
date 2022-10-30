@@ -5,6 +5,7 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
+    console.log(req.rawBody)
     const str = Object.keys(req.body)[0] + ''
     const payInf = JSON.parse(str)
     console.log(str)
