@@ -5,15 +5,15 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    console.log(`Фулл тіло запиту ${req.body}`)
+    console.log(req.body)
 
-    console.log(`Мерчант ${req.body.merchantAccount}`)
-    console.log(`Номер ${req.body.orderReference}`)
-    console.log(`Сигнатура ${req.body.merchantSignature}`)
-    console.log(`Сумма ${req.body.amount}`)
-    console.log(`Час обробки ${req.body.processingDate}`)
-    console.log(`Статус оплати ${req.body.transactionStatus}`)
-    console.log(`Портал ${req.body.value}`)
+    console.log(req.body.merchantAccount)
+    console.log(req.body.orderReference)
+    console.log(req.body.merchantSignature)
+    console.log(req.body.amount)
+    console.log(req.body.processingDate)
+    console.log(req.body.transactionStatus)
+    console.log(req.body.value)
 
 
     let time = Date.now()
