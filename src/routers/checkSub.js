@@ -1,10 +1,20 @@
+const express = require('express')
 const api = require('../api')
 const User = require('../db/user')
 const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    //const payInf = JSON.parse(req.body)
+
+    const encoding = express.json({
+        limit: '5mb',
+        verify: (req, res, buf) => {
+            req.rawBody = buf.toString()
+        },
+    },
+);
+    console.log(encoding)
+    /*
     const str = Object.keys(req.body)[0] + '[]}'
     const payInf = JSON.parse(str)
     console.log(`Інфо: ${Object.values(req.body)}`)
@@ -16,7 +26,7 @@ async function checkSub(req, res) {
     console.log(`Код відповіді: ${payInf.reasonCode}`)
     console.log(`Статус відповідіь: ${payInf.reason}`)
     console.log(`Час обробки: ${payInf.processingDate}`)
-
+    */
     let time = Date.now()
 
     res.json({
