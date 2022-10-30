@@ -5,15 +5,17 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
+    const str = Object.keys(req.body)[0]
+    const payInf = JSON.parse(str)
     console.log(req.body)
 
-    console.log(req.body.merchantAccount)
-    console.log(req.body.orderReference)
-    console.log(req.body.merchantSignature)
-    console.log(req.body.amount)
-    console.log(req.body.processingDate)
-    console.log(req.body.transactionStatus)
-    console.log(req.body.value)
+    console.log(payInf.merchantAccount)
+    console.log(payInf.orderReference)
+    console.log(payInf.merchantSignature)
+    console.log(payInf.amount)
+    console.log(payInf.processingDate)
+    console.log(payInf.transactionStatus)
+    console.log(payInf.value)
 
 
     let time = Date.now()
