@@ -3,6 +3,8 @@
 async function checkSub(req, res) {
     console.log(JSON.parse(JSON.stringify(req.body)))
     const payInf = JSON.parse(JSON.stringify(req.body))
+    console.log(Object.keys(payInf))
+    console.log(Object.values(payInf))
     //const payObj = JSON.parse(payInf)
 
 
@@ -26,12 +28,12 @@ async function checkSub(req, res) {
 
 
     console.log(payInf ["merchantAccount"])
-    console.log(payInf[0].orderReference)
-    console.log(payInf[0].merchantSignature)
-    console.log(payInf[0].amount)
-    console.log(payInf[0].processingDate)
-    console.log(payInf[0].transactionStatus)
-    console.log(payInf[2].value)
+    console.log(payInf.orderReference)
+    console.log(payInf.merchantSignature)
+    console.log(payInf.amount)
+    console.log(payInf.processingDate)
+    console.log(payInf.transactionStatus)
+    console.log(payInf.value)
 
 
     //res.json({
