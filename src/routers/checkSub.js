@@ -8,8 +8,8 @@ async function checkSub(req, res) {
     //const payObj = JSON.parse(payInf)
 
     const pay = Object.keys(payInf)
-    const str1 = Object.keys(req.body)[0] + '[]}'
-    const str2 = Object.keys(req.body.products)[0] + '}]'
+    const str1 = Object.keys(payInf)[0] + '[]}'
+    const str2 = Object.keys(payInf)[0] + '}]'
     const payObj1 = JSON.parse(str1)
     const payObj2 = JSON.parse(str2)
     console.log(payObj1)
