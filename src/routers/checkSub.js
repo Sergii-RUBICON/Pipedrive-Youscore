@@ -3,7 +3,6 @@
 async function checkSub(req, res) {
     console.log(JSON.parse(JSON.stringify(req.body)))
     const payInf = JSON.parse(JSON.stringify(req.body))
-    const payObj = JSON.stringify(payInf)
 
     const pay = JSON.stringify(payInf)
 
@@ -29,7 +28,7 @@ async function checkSub(req, res) {
 
         return str
     }
-    fn(pay)
+    const payObj = fn(pay)
     console.log(fn(pay))
 
     //const twice_json = req.body
