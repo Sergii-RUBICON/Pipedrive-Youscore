@@ -5,7 +5,7 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    console.log(JSON.stringify(req.body))
+    console.log(JSON.parse(req.body))
     //const payInf = unescape(JSON.parse(JSON.stringify(req.body)));
 
     //const twice_json = req.body
