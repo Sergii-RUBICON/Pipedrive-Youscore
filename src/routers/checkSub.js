@@ -5,13 +5,13 @@ const fields = require('../fields')
 
 
 async function checkSub(req, res) {
-    //console.log(JSON.stringify(req.body))
+    console.log(JSON.stringify(req.body))
     //const payInf = unescape(JSON.parse(JSON.stringify(req.body)));
 
-    const twice_json = req.body
-    const json = JSON.parse(twice_json)
-    const obj = JSON.parse(json)
-    console.log(obj.merchantAccount)
+    //const twice_json = req.body
+    //const json = JSON.parse(twice_json)
+    //const obj = JSON.parse(json)
+    //console.log(obj.merchantAccount)
 
 
     //console.log(payInf.merchantAccount)
