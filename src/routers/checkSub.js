@@ -8,12 +8,15 @@ async function checkSub(req, res) {
     //const payObj = JSON.parse(payInf)
 
     const pay = Object.keys(payInf)
-    const str1 = Object.keys(payInf)[0] + '[]}'
-    const str2 = Object.keys(payInf)[0] + '}]'
+    const str1 = Object.keys(req.body)[0] + '[]}'
     const payObj1 = JSON.parse(str1)
-    const payObj2 = JSON.parse(str2)
     console.log(payObj1)
-    console.log(payObj2)
+
+    const str2 = Object.keys(req.body)
+    if (str2.hasOwnProperty('value') == true) {
+        console.log([str2.value])
+    }
+
 
     //const twice_json = req.body
     //const json = JSON.parse(twice_json)
