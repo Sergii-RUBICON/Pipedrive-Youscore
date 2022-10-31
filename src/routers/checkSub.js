@@ -1,14 +1,36 @@
-const express = require('express')
-const api = require('../api')
-const User = require('../db/user')
-const fields = require('../fields')
-const {json} = require("express");
 
 
 async function checkSub(req, res) {
     console.log(JSON.parse(JSON.stringify(req.body)))
     const payInf = JSON.parse(JSON.stringify(req.body))
     const payObj = JSON.stringify(payInf)
+
+    const pay = JSON.stringify(payInf)
+
+    function fn(pay) {
+        let str = ''
+
+        const left = Object.keys(pay)
+        str += left[0]
+
+        let products = Object.values(pay)
+        str += '['
+
+        while (Object.values(products).length) {
+            if (Object.keys(products[0])[0]) str += Object.keys(products[0])[0] + ','
+
+            products = Object.values(products[0])
+        }
+
+        str = str.slice(0, -1)
+
+        str += ']'
+        str += '}'
+
+        return str
+    }
+    fn(pay)
+    console.log(fn(pay))
 
     //const twice_json = req.body
     //const json = JSON.parse(twice_json)
