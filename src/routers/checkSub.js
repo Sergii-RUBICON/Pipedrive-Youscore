@@ -2,10 +2,11 @@ const express = require('express')
 const api = require('../api')
 const User = require('../db/user')
 const fields = require('../fields')
+const {json} = require("express");
 
 
 async function checkSub(req, res) {
-    console.log(JSON.parse(req.body))
+    console.log(JSON.parse(JSON.stringify(req.body)))
     //const payInf = unescape(JSON.parse(JSON.stringify(req.body)));
 
     //const twice_json = req.body
