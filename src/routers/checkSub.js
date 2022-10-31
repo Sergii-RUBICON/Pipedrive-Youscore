@@ -14,13 +14,13 @@ async function checkSub(req, res) {
     console.log(obj.merchantAccount)
 
 
-    console.log(payInf.merchantAccount)
-    console.log(payInf.orderReference)
-    console.log(payInf.merchantSignature)
-    console.log(payInf.amount)
-    console.log(payInf.processingDate)
-    console.log(payInf.transactionStatus)
-    console.log(payInf.value)
+    //console.log(payInf.merchantAccount)
+    //console.log(payInf.orderReference)
+    //console.log(payInf.merchantSignature)
+    //console.log(payInf.amount)
+    //console.log(payInf.processingDate)
+    //console.log(payInf.transactionStatus)
+    //console.log(payInf.value)
 
     /*
     const str = Object.keys(req.body)[0] + '[]}'
