@@ -9,19 +9,21 @@ async function checkSub(req, res) {
     console.log(JSON.parse(JSON.stringify(req.body)))
     const payInf = JSON.parse(JSON.stringify(req.body))
 
+
+
     //const twice_json = req.body
     //const json = JSON.parse(twice_json)
     //const obj = JSON.parse(json)
     //console.log(obj.merchantAccount)
 
 
-    console.log(payInf.merchantAccount)
-    console.log(payInf.orderReference)
-    console.log(payInf.merchantSignature)
-    console.log(payInf.amount)
-    console.log(payInf.processingDate)
-    console.log(payInf.transactionStatus)
-    console.log(payInf.value)
+    console.log(payInf[0].merchantAccount)
+    console.log(payInf[0].orderReference)
+    console.log(payInf[0].merchantSignature)
+    console.log(payInf[0].amount)
+    console.log(payInf[0].processingDate)
+    console.log(payInf[0].transactionStatus)
+    console.log(payInf[0].value)
 
     /*
     const str = Object.keys(req.body)[0] + '[]}'
