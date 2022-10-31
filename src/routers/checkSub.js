@@ -7,7 +7,7 @@ const fields = require('../fields')
 async function checkSub(req, res) {
     console.log(JSON.stringify(req.body))
     const payInf = unescape(JSON.parse(JSON.stringify(req.body)));
-    console.log(JSON.stringify(payInf))
+    console.log(payInf.toString())
 
     console.log(payInf.merchantAccount)
     console.log(payInf.orderReference)
