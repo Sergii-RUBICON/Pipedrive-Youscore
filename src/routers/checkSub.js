@@ -9,6 +9,14 @@ async function checkSub(req, res) {
     const payInf = unescape(JSON.parse(JSON.stringify(req.body)));
     console.log(payInf)
 
+    console.log(payInf.merchantAccount)
+    console.log(payInf.orderReference)
+    console.log(payInf.merchantSignature)
+    console.log(payInf.amount)
+    console.log(payInf.processingDate)
+    console.log(payInf.transactionStatus)
+    console.log(payInf.value)
+
     /*
     const str = Object.keys(req.body)[0] + '[]}'
     const payInf = JSON.parse(str)
