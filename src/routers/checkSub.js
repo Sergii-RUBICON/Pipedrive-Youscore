@@ -2,22 +2,20 @@
 
 async function checkSub(req, res) {
     //console.log(JSON.parse(JSON.stringify(req.body)))
-    const payInf = JSON.parse(JSON.stringify(req.body))
+    //const payInf = JSON.parse(JSON.stringify(req.body))
     //console.log(Object.keys(payInf))
     //console.log(Object.values(payInf))
     //const payObj = JSON.parse(payInf)
 
+    //const str1 = Object.keys(req.body)[0] + '[]}'
+    //const payObj1 = JSON.parse(str1)
+    console.log(req.data)
 
-
-    const str1 = Object.keys(req.body)[0] + '[]}'
-    const payObj1 = JSON.parse(str1)
-    console.log(payObj1)
-
-    console.log(Object.values(req.body))
-    const str2 = Object.values(req.body)
-    const fStr2 = Object.keys(str2)
-    const payObj2 = JSON.parse(fStr2)
-    console.log(payObj2)
+    //console.log(Object.values(req.body))
+    //const str2 = Object.values(req.body)
+    //const fStr2 = Object.keys(str2)
+    //const payObj2 = JSON.parse(fStr2)
+    //console.log(payObj2)
 
 
     //const str2 = Object.keys(req.body)
@@ -43,13 +41,13 @@ async function checkSub(req, res) {
     //console.log(payInf)
 
 
-    console.log(pay ["merchantAccount"])
-    console.log(pay.orderReference)
-    console.log(payInf.merchantSignature)
-    console.log(payInf.amount)
-    console.log(payInf.processingDate)
-    console.log(payInf.transactionStatus)
-    console.log(payInf.value)
+    //console.log(pay ["merchantAccount"])
+    //console.log(pay.orderReference)
+    //console.log(payInf.merchantSignature)
+    //console.log(payInf.amount)
+    //console.log(payInf.processingDate)
+    //console.log(payInf.transactionStatus)
+    //console.log(payInf.value)
 
 
     //res.json({
