@@ -1,4 +1,4 @@
-
+const curl_convertor = require('curl-to-json-object')
 
 async function checkSub(req, res) {
     //console.log(JSON.parse(JSON.stringify(req.body)))
@@ -9,7 +9,7 @@ async function checkSub(req, res) {
 
     //const str1 = Object.keys(req.body)[0] + '[]}'
     //const payObj1 = JSON.parse(str1)
-    console.log(req.body)
+    console.log(curl_convertor(req.body))
 
     //console.log(Object.values(req.body))
     //const str2 = Object.values(req.body)
