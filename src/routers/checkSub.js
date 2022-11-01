@@ -9,7 +9,7 @@ async function checkSub(req, res) {
 
     //const str1 = Object.keys(req.body)[0] + '[]}'
     //const payObj1 = JSON.parse(str1)
-    console.log(req.data)
+    console.log(req.body)
 
     //console.log(Object.values(req.body))
     //const str2 = Object.values(req.body)
