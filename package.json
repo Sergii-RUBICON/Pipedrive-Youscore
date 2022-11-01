@@ -10,6 +10,7 @@
   "author": "Serhiienko Serhii",
   "license": "ISC",
   "dependencies": {
+    "@bany/curl-to-json": "^1.2.2",
     "@pipedrive/app-extensions-sdk": "^0.1.0",
     "ajax": "^0.0.4",
     "api-key-auth": "^0.2.3",
