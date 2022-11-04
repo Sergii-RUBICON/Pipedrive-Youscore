@@ -177,4 +177,4 @@ app.use('/public', express.static(__dirname + '/public'))
 
 setupExpress(express)
 
-app.listen(process.env.PORT || 3000, () => console.log(`🟢 App has started. \n🔗 Live URL: https://${process.env.PROJECT_DOMAIN}.glitch.me`))
+app.listen(process.env.PORT || 3000, () => console.log(`🟢 App has started. \n🔗 Live URL: https://app.rubicon.tips`))

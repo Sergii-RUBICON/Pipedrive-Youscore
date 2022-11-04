@@ -108,7 +108,7 @@ async function preparationFields (director, companyNameUse, companyName) {
     const newShortName = `${shortNme[0]} ${shortNme[1][0]}.${shortNme[2][0]}.`
     console.log('П.І.Б Скорочено: ' + newShortName)
 
-    if (companyNameUse == true) {
+    if (companyNameUse === true) {
         const nameCompany = companyName
 
         let changeName = fullName.split(' ')
@@ -132,7 +132,7 @@ async function preparationFields (director, companyNameUse, companyName) {
             infoForContract: infoForContract
         }
 
-    } else if (companyNameUse == false) {
+    } else if (companyNameUse === false) {
         const nameCompany = `ФОП ${newFullName}`
         const infoForContract = `Фізична особа-підприємець ${newFullName}`
         console.log('Інфо для договору: ' + infoForContract)
@@ -147,7 +147,7 @@ async function preparationFields (director, companyNameUse, companyName) {
 }
 
 async function whatGender (firstName) {
-    if (firstName.substr(-1) == 'а' | firstName.substr(-1) == 'я'
+    if (firstName.substr(-1) === 'а' | firstName.substr(-1) === 'я'
         &&  firstName !== 'Воля' | 'Гордята' |'Грива' | 'Микита' | 'Олекса' | 'Рава' | 'Слава' | 'Снага' | 'Сурма'
         | 'Хвала' | 'Ходота' | 'Чара') {
         console.log('Відміняємо в жіночому роді')
