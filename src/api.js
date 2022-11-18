@@ -40,8 +40,8 @@ function checkConnect(apiKey) {
 async function getTOV(code, companyDomain) {
     const apiKey = await user.findYKeyByPortal(companyDomain)
     console.log('Portal domain: ' + companyDomain)
-    const result = await axios.get(`https://api.youscore.com.ua/v1/companyInfo/${code}?apiKey=` + apiKey.Y_api_key)
     console.log('Api key: ' + apiKey.Y_api_key)
+    const result = await axios.get(`https://api.youscore.com.ua/v1/companyInfo/${code}?apiKey=` + apiKey.Y_api_key)
     console.log(result.data)
     return result.data
 }
