@@ -125,7 +125,7 @@ app.get('/main', async (req, res) => {
         if (codeDB) {
             code = codeDB.Y_api_key
         }
-        else if (codeDB == null || codeDB == undefined) {
+        else if (codeDB === null || codeDB === undefined) {
             code = "Ключ не занйдено"
         }
         res.render('main', {

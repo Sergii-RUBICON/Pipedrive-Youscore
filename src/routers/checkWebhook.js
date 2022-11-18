@@ -46,7 +46,7 @@ async function checkWebhook(req, res) {
 
             else if (sub.subscription_status || dateNow < dateSub) { // (dateNow < dateSub)
 
-                if (String(currentEDRPO).length == 8) {
+                if (String(currentEDRPO).length === 8) {
                     console.log('Запит на отримання інфорації по коду ТОВ')
                     try { //41750253
                         connectStatus = true
@@ -69,7 +69,7 @@ async function checkWebhook(req, res) {
                         res.end()
                     }
                 }
-                else if (String(currentEDRPO).length == 10) {
+                else if (String(currentEDRPO).length === 10) {
                     console.log('Запит на отримання інформації по коду ФОП')
                     try { //3461610104
                         connectStatus = true

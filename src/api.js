@@ -39,14 +39,15 @@ function checkConnect(apiKey) {
 
 async function getTOV(code, companyDomain) {
     const apiKey = await user.findYKeyByPortal(companyDomain)
+    console.log('Portal domain: ' + companyDomain)
     const result = await axios.get(`https://api.youscore.com.ua/v1/companyInfo/${code}?apiKey=` + apiKey.Y_api_key)
+    console.log('Api key: ' + apiKey.Y_api_key)
     console.log(result.data)
     return result.data
 }
 
 async function getFOP(code, companyDomain) {
     const apiKey = await user.findYKeyByPortal(companyDomain)
-    console.log('Start')
     const result = await axios.get(`https://api.youscore.com.ua/v1/usr/${code}?apiKey=` + apiKey.Y_api_key, {showCurrentData: true})
     console.log(result)
     return result
