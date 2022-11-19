@@ -18,12 +18,6 @@ const fs = require('fs')
 const app = express()
 
 
-app.use((req, res, next) => {
-    console.log('Request to ' + req.url);
-    next()
-});
-
-
 //### Connect to DB ###\\
 connectMongo.main()
 
@@ -48,7 +42,6 @@ app.get('/auth/pipedrive/callback', passport.authenticate('pipedrive', {
     failureRedirect: '/',
     successRedirect: '/'
 }))
-
 
 app.use(passport.initialize())
 
