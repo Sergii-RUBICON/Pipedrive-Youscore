@@ -12,6 +12,7 @@ const mainRouter = require('./src/routers/main')
 const setupExpress = require('./src/setupExpress')
 const fields = require('./src/fields')
 const fs = require('fs')
+const bodyParser = require('body-parser')
 
 
 //### App start ###\\
@@ -164,6 +165,14 @@ app.get('/end', async (req, res) => {
     catch (error) {
         return res.send(error.message)
     }
+})
+
+
+app.post('/checkSupPay', bodyParser.urlencoded({extended: false}), async(req, res) => {
+    console.log(req)
+    console.log(req.body)
+
+    res.end()
 })
 
 app.set('view engine', 'hbs')

@@ -2,11 +2,13 @@
 
 async function checkSub(req, res) {
 
-    const objKeys = Object.keys(req.body)[0]
-    const payInf = JSON.parse(objKeys)
+    console.log(req)
 
-    console.log(objKeys)
-    console.log(payInf)
+    //const objKeys = Object.keys(req.body)[0]
+    //const payInf = JSON.parse(objKeys)
+
+    //console.log(objKeys)
+    //console.log(payInf)
 
     //let dummyString = JSON.stringify(req.body)
     //let finalString = dummyString.replaceAll('"', '')
