@@ -41,7 +41,7 @@ jobs:
           port: PORT
           script: |
             cd ~/${{ env.REPOSITORY_NAME }}
-            git pull origin main
+            git pull -f origin main
 
       - name: Setup
         uses: appleboy/ssh-action@master
