@@ -24,6 +24,7 @@
     "knex-schema-inspector": "^2.0.3",
     "mongoose": "^6.5.0",
     "node-fetch": "^2.6.7",
+    "node-libcurl": "^3.0.0",
     "passport": "^0.6.0",
     "passport-oauth": "^1.0.0",
     "passport-oauth2": "^1.6.1",
