@@ -11,12 +11,12 @@ const router = express()
 
 //router.use(bodyParser.urlencoded({ extended: true }))
 router.use(express.static(path.join(__dirname, 'public')))
-
+//bodyParser.urlencoded({ extended: false, inflate: false})
 
 router.post('/createFields', createFields)
 router.post('/createWebhook', createWebhook)
 router.post('/', connectRouter)
 router.post('/checkWebhook', bodyParser.json(), checkWebhook)
-router.post('/checkSupPay', bodyParser.urlencoded({ extended: false, inflate: false}), checkSub)
+router.post('/checkSupPay', bodyParser.json({inflate: false}), checkSub)
 
 module.exports = router
