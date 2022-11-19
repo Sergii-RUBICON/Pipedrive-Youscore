@@ -1,8 +1,8 @@
 
 
 async function checkSub(req, res) {
-    const payIn = req.body
-    console.log(payIn[0])
+    console.log(req)
+    console.log(req.body.merchantAccount)
 
     res.end()
 }
