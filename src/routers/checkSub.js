@@ -2,7 +2,7 @@
 
 async function checkSub(req, res) {
 
-    const objKeys = Object.keys(req.body)[0] + ':'
+    const objKeys = Object.keys(req.body)[0]
     const payInf = JSON.parse(objKeys)
 
     console.log(objKeys)
