@@ -6,7 +6,6 @@ const connectRouter = require('./connect')
 const createWebhook = require('./createWebhook')
 const createFields = require('./createFields')
 const checkSub = require('./checkSub')
-const {application, json} = require("express");
 const router = express()
 
 //router.use(bodyParser.urlencoded({ extended: true }))
