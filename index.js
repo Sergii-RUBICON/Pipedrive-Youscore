@@ -17,6 +17,10 @@ const fs = require('fs')
 //### App start ###\\
 const app = express()
 
+app.use((req, res, next) => {
+    console.log('Request to ' + req.url);
+    next()
+})
 
 //### Connect to DB ###\\
 connectMongo.main()
