@@ -16,7 +16,7 @@ router.post('/createFields', createFields)
 router.post('/createWebhook', createWebhook)
 router.post('/', connectRouter)
 router.post('/checkWebhook', bodyParser.json(), checkWebhook)
-router.post('/checkSupPay', bodyParser.json(), bodyParser.urlencoded({extended: true, type:'application/json'}), checkSub)
+router.post('/checkSupPay', bodyParser.urlencoded(), checkSub)
 
 module.exports = router
 
