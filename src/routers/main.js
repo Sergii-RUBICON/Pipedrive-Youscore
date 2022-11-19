@@ -10,7 +10,7 @@ const router = express()
 
 
 const jsonParser = bodyParser.json()
-const urlencodedParser = bodyParser.urlencoded({ extended: true })
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 //router.use(bodyParser.urlencoded({ extended: true }))
 router.use(express.static(path.join(__dirname, 'public')))
 //router.use(bodyParser.urlencoded({ extended: false}))
