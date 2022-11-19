@@ -168,13 +168,6 @@ app.get('/end', async (req, res) => {
 })
 
 
-app.post('/checkSupPay', bodyParser.urlencoded({extended: false}), async(req, res) => {
-    console.log(req)
-    console.log(req.body)
-
-    res.end()
-})
-
 app.set('view engine', 'hbs')
 
 app.use('/', mainRouter)
