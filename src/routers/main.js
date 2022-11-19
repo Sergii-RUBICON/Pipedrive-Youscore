@@ -10,7 +10,7 @@ const router = express()
 
 //router.use(bodyParser.urlencoded({ extended: true }))
 router.use(express.static(path.join(__dirname, 'public')))
-router.use(bodyParser.urlencoded({ extended: false, inflate: false}))
+//router.use(bodyParser.urlencoded({ extended: false, inflate: false}))
 
 router.post('/createFields', createFields)
 router.post('/createWebhook', createWebhook)
