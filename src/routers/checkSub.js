@@ -1,8 +1,10 @@
 
 
 async function checkSub(req, res) {
+    console.log(req)
 
-    //console.log(JSON.parse(JSON.stringify(req.body)))
+    const obj = JSON.parse(JSON.stringify(req.body))
+    console.log('Our object' + obj)
     //const payInf = JSON.parse(JSON.stringify(req.body))
     //console.log(Object.keys(payInf))
     //console.log(Object.values(payInf))
@@ -10,7 +12,7 @@ async function checkSub(req, res) {
 
     //const str1 = Object.keys(req.body)[0] + '[]}'
     //const payObj1 = JSON.parse(str1)
-    console.log(req)
+
 
 
     //console.log(Object.values(req.body))
