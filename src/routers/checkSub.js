@@ -6,9 +6,7 @@ async function checkSub(req, res) {
     const obj = JSON.parse(JSON.stringify(req.body))
     console.log('Our object' + obj)
 
-    for (let property in obj) {
-       console.log(property + "=" + obj[property])
-    }
+    console.log(obj[merchantAccount])
 
     //const payInf = JSON.parse(JSON.stringify(req.body))
     //console.log(Object.keys(payInf))
