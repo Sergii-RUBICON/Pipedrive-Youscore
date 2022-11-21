@@ -1,8 +1,15 @@
-const qs = require('qs')
+
 
 
 async function checkSub(req, res) {
-    console.log({req})
+    console.log(req.body.merchantAccount)
+    //console.log(req.body.orderReference)
+    //console.log(req.body.merchantSignature)
+    //console.log(payObj.amount)
+    //console.log(payObj.processingDate)
+    //console.log(payObj.transactionStatus)
+    //console.log(payObj.value)
+
     //console.log(req)
 
 
