@@ -9,7 +9,7 @@ const checkSub = require('./checkSub')
 const router = express()
 
 //router.use(bodyParser.json())
-//router.use(bodyParser.urlencoded({ extended: false }))
+router.use(bodyParser.urlencoded({ extended: false }))
 router.use(express.static(path.join(__dirname, 'public')))
 
 
