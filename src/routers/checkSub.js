@@ -2,6 +2,8 @@
 
 
 async function checkSub(req, res) {
+    console.log(req)
+    console.log(req.body)
     console.log(req.body.merchantAccount)
     //console.log(req.body.orderReference)
     //console.log(req.body.merchantSignature)
