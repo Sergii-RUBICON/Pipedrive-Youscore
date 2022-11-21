@@ -9,9 +9,10 @@ const checkSub = require('./checkSub')
 const router = express()
 
 router.use(express.json())
-router.use(express.urlencoded({ extended: true, type: '*/x-www-form-urlencoded',
+router.use(express.urlencoded({ extended: true, type: 'application/x-www-form-urlencoded', inflate: false,
     verify: (req, res, buf) => {
-    req.rawBody = buf.toString();
+    req.rawBody = buf.toJSON()
+        console.log('Buf: ' + buf)
 }}))
 router.use(express.static(path.join(__dirname, 'public')))
 
