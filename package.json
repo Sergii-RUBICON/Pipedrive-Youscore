@@ -29,6 +29,7 @@
     "passport-oauth": "^1.0.0",
     "passport-oauth2": "^1.6.1",
     "pipedrive": "^16.0.3",
+    "qs": "^6.11.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "shevchenko": "^2.1.1",
