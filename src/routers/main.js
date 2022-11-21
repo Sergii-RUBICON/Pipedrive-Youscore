@@ -9,7 +9,7 @@ const checkSub = require('./checkSub')
 const router = express()
 
 //router.use(bodyParser.json())
-//router.use(bodyParser.urlencoded({ extended: false }))
+//router.use(express.urlencoded({ type: 'application/json' }))
 router.use(express.static(path.join(__dirname, 'public')))
 
 
@@ -17,6 +17,6 @@ router.post('/createFields', createFields)
 router.post('/createWebhook', createWebhook)
 router.post('/', connectRouter)
 router.post('/checkWebhook', bodyParser.json(), checkWebhook)
-router.post('/checkSupPay', express.json({ type: 'application/json' }), checkSub)
+router.post('/checkSupPay', express.json({ strict: false, type: 'application/x-www-form-urlencoded' }), checkSub)
 
 module.exports = router
