@@ -7,7 +7,7 @@ async function checkSub(req, res) {
     console.log(req.rawBody)
 
     const rawStr =req.rawBody
-    JSON.parse(rawStr.slice(1, rawStr.length - 1))
+    //JSON.parse(rawStr.slice(1, rawStr.length - 1))
     //console.log(JSON.parse(req.rawBody))
     //console.log(req.body.merchantAccount)
     //console.log(req.body.orderReference)
