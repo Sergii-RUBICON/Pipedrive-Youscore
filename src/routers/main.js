@@ -9,7 +9,7 @@ const checkSub = require('./checkSub')
 const router = express()
 
 router.use(express.json())
-router.use(express.urlencoded({ extended: false }))
+router.use(express.urlencoded({ extended: false, type: '*/x-www-form-urlencoded' }))
 router.use(express.static(path.join(__dirname, 'public')))
 
 
