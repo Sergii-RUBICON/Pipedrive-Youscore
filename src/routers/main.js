@@ -18,6 +18,6 @@ router.post('/checkWebhook', bodyParser.json(), checkWebhook)
 router.post('/checkSupPay', express.urlencoded({ extended: true,
     verify(req, res, buf,) {
     req.rawBody = buf.toString();
-}}),checkSub)
+}}), checkSub)
 
 module.exports = router
