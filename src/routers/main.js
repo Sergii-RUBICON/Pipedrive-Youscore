@@ -15,10 +15,6 @@ router.post('/createFields', createFields)
 router.post('/createWebhook', createWebhook)
 router.post('/', connectRouter)
 router.post('/checkWebhook', bodyParser.json(), checkWebhook)
-router.post('/checkSupPay', express.raw({
-    verify: (req, res, buf) => {
-        req.rawBody = buf.toString();
-    }
-}), checkSub)
+router.post('/checkSupPay', express.json({strict: false}), checkSub)
 
 module.exports = router
