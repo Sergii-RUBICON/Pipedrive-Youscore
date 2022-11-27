@@ -8,8 +8,6 @@ const createFields = require('./createFields')
 const checkSub = require('./checkSub')
 const router = express()
 
-router.use(bodyParser.json()); // support json encoded bodies
-router.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 router.use(express.static(path.join(__dirname, 'public')))
 
 router.post('/createFields', createFields)
