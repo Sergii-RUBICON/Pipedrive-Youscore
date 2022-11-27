@@ -1,10 +1,7 @@
-const url = require('url');
 
 async function checkSub(req, res) {
-    const q = url.parse(req.body, true)
 
-    console.log(q)
-    console.log()
+    console.log(req)
     //JSON.parse(rawStr.slice(1, rawStr.length - 1))
     //console.log(JSON.parse(req.rawBody))
     //console.log(req.body.merchantAccount)
