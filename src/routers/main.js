@@ -8,6 +8,7 @@ const createFields = require('./createFields')
 const checkSub = require('./checkSub')
 const router = express()
 
+router.use(bodyParser.urlencoded({ extended: true }))
 router.use(express.static(path.join(__dirname, 'public')))
 
 router.post('/createFields', createFields)
