@@ -2,8 +2,9 @@
 async function checkSub(req, res) {
 
     console.log(req)
-    const obj = JSON.parse(req.body)
-    console.log(obj)
+    console.log(req.body)
+    console.log(req.rawBody)
+    console.log(JSON.parse(req.rawBody))
     //JSON.parse(rawStr.slice(1, rawStr.length - 1))
     //console.log(JSON.parse(req.rawBody))
     //console.log(req.body.merchantAccount)
