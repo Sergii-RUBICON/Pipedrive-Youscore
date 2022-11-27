@@ -1,9 +1,10 @@
-
-
+const qs = require('qs')
+const assert = require('assert')
 
 async function checkSub(req, res) {
-    console.log(req)
-    console.log(req.body)
+    const obj = JSON.parse(JSON.stringify(req.body))
+    const parse = qs.parse(obj)
+    console.log(parse)
 
     //JSON.parse(rawStr.slice(1, rawStr.length - 1))
     //console.log(JSON.parse(req.rawBody))
