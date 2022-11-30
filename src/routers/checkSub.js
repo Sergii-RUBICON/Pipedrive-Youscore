@@ -17,7 +17,7 @@ async function checkSub(req, res) {
         orderReference: obj.orderReference,
         status: "accept",
         time: Date.now(),
-        signature: "",
+        signature: obj.merchantSignature,
     })
     res.end()
 }
