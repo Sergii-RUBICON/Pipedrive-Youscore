@@ -5,13 +5,14 @@ async function checkSub(req, res) {
     console.log(req.rawBody)
     console.log(obj)
 
-    console.log(obj.merchantAccount)
-    console.log(obj.orderReference)
-    console.log(obj.authCode)
-    console.log(obj.products[0].name)
-    console.log(obj.products[0].price)
-    console.log(obj.clientFields[0].name)
-    console.log(obj.clientFields[0].value)
+    console.log(`Мерчант: ${obj.merchantAccount}`)
+    console.log(`Номер заказу: ${obj.orderReference}`)
+    console.log(`Код авторизації: ${obj.authCode}`)
+    console.log(`Назва продукта: ${obj.products[0].name}`)
+    console.log(`Ціна продукдта: ${obj.products[0].price}`)
+    console.log(`Кількість продукта: ${obj.products[0].count}`)
+    console.log(`Назва кастом поля: ${obj.clientFields[0].name}`)
+    console.log(`Портал: ${obj.clientFields[0].value}`)
 
     res.json({
         orderReference: obj.orderReference,
