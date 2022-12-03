@@ -19,7 +19,7 @@ async function checkSub(req, res) {
         orderReference: obj.orderReference,
         status: "accept",
         time: Date.now(),
-        signature: obj.merchantSignature,
+        signature: "",
     }
     console.log(resObj)
     //resObj = JSON.stringify(resObj)
@@ -43,7 +43,7 @@ module.exports = checkSub
 
 
 /*
-
-
+50228
+629f
  */
 
