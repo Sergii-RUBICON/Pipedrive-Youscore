@@ -19,7 +19,7 @@ async function checkSub(req, res) {
         orderReference: obj.orderReference,
         status: "accept",
         time: Date.now(),
-        signature: ""
+        signature: obj.merchantSignature,
     }
     console.log(resObj)
     resObj = JSON.stringify(resObj)
