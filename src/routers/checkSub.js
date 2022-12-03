@@ -22,8 +22,8 @@ async function checkSub(req, res) {
         signature: obj.merchantSignature,
     }
     console.log(resObj)
-    resObj = JSON.stringify(resObj)
-    console.log(resObj)
+    //resObj = JSON.stringify(resObj)
+    //console.log(resObj)
     const resHMC5 = await hmacmd5(resObj)
     console.log(resHMC5)
 
@@ -40,4 +40,10 @@ async function hmacmd5(string, secret = '59d84bc4cc1c61ea961c75688dd9105eb852128
 
 
 module.exports = checkSub
+
+
+/*
+
+
+ */
 
