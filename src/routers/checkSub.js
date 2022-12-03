@@ -21,7 +21,7 @@ async function checkSub(req, res) {
         time: Date.now()
     }
     console.log(resObj)
-    resObj = resObj.toString()
+    resObj = JSON.stringify(resObj)
     console.log(resObj)
 
     res.end()
