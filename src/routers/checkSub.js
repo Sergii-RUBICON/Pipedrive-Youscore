@@ -18,22 +18,25 @@ async function checkSub(req, res) {
     let resObj = {
         orderReference: obj.orderReference,
         status: "accept",
-        time: Date.now()
+        time: Date.now(),
+        signature: ""
     }
     console.log(resObj)
     resObj = JSON.stringify(resObj)
     console.log(resObj)
+    const resHMC5 = await hmacmd5(resObj)
+    console.log(resHMC5)
 
     res.end()
 }
 
 
-//async function hmacmd5(string, secret = '59d84bc4cc1c61ea961c75688dd9105eb852128b') {
-//    const hash = createHmac('md5',secret)
-//        .update(string+";")
-//        .digest('hex');
-//    return hash
-//}
+async function hmacmd5(string, secret = '59d84bc4cc1c61ea961c75688dd9105eb852128b') {
+    const hash = createHmac('md5',secret)
+        .update(string+";")
+        .digest('hex');
+    return hash
+}
 
 
 module.exports = checkSub
