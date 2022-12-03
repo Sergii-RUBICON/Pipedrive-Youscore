@@ -20,9 +20,9 @@ async function checkSub(req, res) {
         status: "accept",
         time: Date.now()
     }
-    console.log('Res obj: ' + resObj)
+    console.log(resObj)
     resObj = resObj.toString()
-    console.log('Res str' + resObj)
+    console.log(resObj)
 
     res.end()
 }
