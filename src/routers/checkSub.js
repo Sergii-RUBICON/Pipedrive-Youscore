@@ -27,7 +27,7 @@ async function checkSub(req, res) {
     const resHMC5 = await hmacmd5(resObj)
     console.log(resHMC5)
 
-    res.end()
+    res.end(resHMC5)
 }
 
 
