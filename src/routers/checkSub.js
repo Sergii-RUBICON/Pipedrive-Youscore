@@ -1,5 +1,5 @@
 const createHmac = require('crypto').createHmac
-const user = require('./src/db/user')
+const user = require('/src/db/user')
 
 async function checkSub(req, res) {
 
@@ -32,7 +32,7 @@ async function checkSub(req, res) {
     const plusDate = userSub.subscription_end + 2629743
     console.log(plusDate)
 
-    const userUpdateSub = await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, plusDate)
+    await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, plusDate)
     res.end(resHMC5)
 }
 
