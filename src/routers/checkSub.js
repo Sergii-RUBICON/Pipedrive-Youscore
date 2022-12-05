@@ -33,9 +33,10 @@ async function checkSub(req, res) {
     console.log(userSec)
     const userPlusDate = userSec + 2629743
 
+
     console.log(userPlusDate)
 
-    await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, userPlusDate)
+    await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, new Date(userPlusDate))
     res.end(resHMC5)
 }
 
