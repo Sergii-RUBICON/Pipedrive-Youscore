@@ -31,7 +31,7 @@ async function checkSub(req, res) {
     const userSubDate = userSub.subscription_end
     const userSec = Date.parse(userSubDate)
     console.log(userSec)
-    const userPlusDate = userSec + 2629743
+    const userPlusDate = userSec + 2629800000
 
     const timestamp = new Date(userPlusDate)
 
