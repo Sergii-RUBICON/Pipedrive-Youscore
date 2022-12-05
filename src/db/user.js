@@ -98,6 +98,17 @@ async function findUserAndUpdateStatusSub (companyDomain, status) {
     })
 }
 
+async function findOneAndUpdateStatusTime (companyDomain, date) {
+    const filter = {portal: companyDomain}
+    const update = {
+        subscription_end: date
+    }
+
+    await Users.findOneAndUpdate(filter, update, {
+        new: true
+    })
+}
+
 async function findFieldsByPortal (companyDomain) {
     const fieldsKey = await fields.findOne({Portal: companyDomain})
     return fieldsKey
@@ -131,7 +142,8 @@ module.exports = {
     findFieldsByPortal,
     findYKeyByPortal,
     findYKeyByPortalAndUpdate,
-    findUserAndUpdateStatusSub
+    findUserAndUpdateStatusSub,
+    findOneAndUpdateStatusTime,
 }
 
 

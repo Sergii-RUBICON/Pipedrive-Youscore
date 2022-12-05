@@ -1,4 +1,5 @@
 const createHmac = require('crypto').createHmac
+const user = require('./src/db/user')
 
 async function checkSub(req, res) {
 
@@ -9,11 +10,11 @@ async function checkSub(req, res) {
     //console.log(`Мерчант: ${obj.merchantAccount}`)
     //console.log(`Номер заказу: ${obj.orderReference}`)
     //console.log(`Код авторизації: ${obj.authCode}`)
-    //console.log(`Назва продукта: ${obj.products[0].name}`)
-    //console.log(`Ціна продукдта: ${obj.products[0].price}`)
-    //console.log(`Кількість продукта: ${obj.products[0].count}`)
-    //console.log(`Назва кастом поля: ${obj.clientFields[0].name}`)
-    //console.log(`Портал: ${obj.clientFields[0].value}`)
+    console.log(`Назва продукта: ${obj.products[0].name}`)
+    console.log(`Ціна продукдта: ${obj.products[0].price}`)
+    console.log(`Кількість продукта: ${obj.products[0].count}`)
+    console.log(`Назва кастом поля: ${obj.clientFields[0].name}`)
+    console.log(`Портал: ${obj.clientFields[0].value}`)
 
     let resObj = {
         orderReference: obj.orderReference,
@@ -22,11 +23,16 @@ async function checkSub(req, res) {
         signature: "",
     }
     console.log(resObj)
-    //resObj = JSON.stringify(resObj)
-    //console.log(resObj)
     const resHMC5 = await hmacmd5(resObj)
     console.log(resHMC5)
 
+    const userSub = await user.findUserByPortal(obj.clientFields[0].value)
+    console.log(userSub.subscription_end)
+
+    const plusDate = userSub.subscription_end + 2629743
+    console.log(plusDate)
+
+    const userUpdateSub = await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, plusDate)
     res.end(resHMC5)
 }
 
@@ -43,7 +49,6 @@ module.exports = checkSub
 
 
 /*
-50228
-629f
+606f
  */
 
