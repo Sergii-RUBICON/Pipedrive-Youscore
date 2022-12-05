@@ -28,9 +28,11 @@ async function checkSub(req, res) {
 
     const userSub = await user.findUserByPortal(obj.clientFields[0].value)
     console.log(userSub.subscription_end)
+    const userSubDate = userSub.subscription_end
+    const userSec = userSubDate.getDate()
+    const userPlusDate = userSec + 2629743
 
-    const plusDate = userSub.subscription_end + 2629743
-    console.log(plusDate)
+    console.log(userPlusDate)
 
     await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, plusDate)
     res.end(resHMC5)
