@@ -29,7 +29,7 @@ async function checkWebhook(req, res) {
 
             const sub = await User.findUserByPortal(process.env.companyDomain)
             const dateNow = Date.now() // Якщо робити перевірку через дату також
-            const dateSub = Date.parse(sub.subs_end)
+            const dateSub = Date.parse(sub.subscription_end)
 
             const orgID = current.id
             console.log(`Id організації з вебхука : ` + orgID)
