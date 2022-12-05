@@ -98,11 +98,14 @@ async function findUserAndUpdateStatusSub (companyDomain, status) {
     })
 }
 
-async function findOneAndUpdateStatusTime (companyDomain, date) {
+async function findOneAndUpdateStatusTime (companyDomain, subDate) {
     const filter = {portal: companyDomain}
     const update = {
-        subscription_end: date
+        subscription_end: subDate
     }
+
+    console.log('Domen: ' + companyDomain)
+    console.log('Date: ' + subDate)
 
     await Users.findOneAndUpdate(filter, update, {
         new: true
