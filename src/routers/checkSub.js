@@ -1,5 +1,5 @@
 const createHmac = require('crypto').createHmac
-const user = require('/src/db/user')
+const user = require('src/db/user')
 
 async function checkSub(req, res) {
 
