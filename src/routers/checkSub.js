@@ -33,10 +33,11 @@ async function checkSub(req, res) {
     console.log(userSec)
     const userPlusDate = userSec + 2629743
 
+    const timestamp = new Date(userPlusDate)
 
     console.log(userPlusDate)
 
-    await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, new Date(userPlusDate))
+    await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, timestamp)
     res.end(resHMC5)
 }
 
