@@ -1,5 +1,6 @@
 const monthly = document.querySelector('.monthly-btn')
 const yearly = document.querySelector('.yearly-btn')
+const pay = document.querySelector('.pay-btn')
 const info_user = document.querySelector('.info_user')
 const dropdown_menu = document.querySelector('.dropdown_menu')
 const open_menu_btn = document.getElementById('open_menu_btn')
@@ -15,10 +16,13 @@ const monthlyPrice = '10'
 const yearlyPrice = '8'
 
 price.textContent = yearlyPrice
+pay.href = 'https://secure.wayforpay.com/button/bc6d17ab2ca82'
 
 monthly.addEventListener('click', () => {
     yearly.classList.remove('active')
+    pay.href.remove('https://secure.wayforpay.com/button/bc6d17ab2ca82')
     monthly.classList.add('active')
+    pay.href.add('https://secure.wayforpay.com/button/b69c1c9486965')
     price.textContent = monthlyPrice
     priceEnding.classList.remove('sale')
     price_desc.textContent = 'Оплачується щомісяця'
@@ -26,7 +30,9 @@ monthly.addEventListener('click', () => {
 
 yearly.addEventListener('click', () => {
     monthly.classList.remove('active')
+    pay.href.remove('https://secure.wayforpay.com/button/b69c1c9486965')
     yearly.classList.add('active')
+    pay.href.add('https://secure.wayforpay.com/button/bc6d17ab2ca82')
     price.textContent = yearlyPrice
     priceEnding.classList.add('sale')
     price_desc.textContent = 'Оплачується щороку'
