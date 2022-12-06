@@ -113,7 +113,7 @@ app.get('/main', async (req, res) => {
     try {
         const userInfo = await api.getUser(req.user.access_token)
         const timestamp = await User.findUserByPortal(userInfo.data.company_domain)
-        const subDate = await fields.timestampToNormalDate(timestamp.subscription_end, timestamp.subscription_status)
+        const subDate = await fields.timestampToNormalDate(timestamp.subscription_end)
         const subStatus = await fields.checkSubStatus(timestamp.subscription_end)
         console.log(userInfo)
 
