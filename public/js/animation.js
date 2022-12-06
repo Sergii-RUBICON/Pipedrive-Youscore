@@ -1,6 +1,6 @@
 const monthly = document.querySelector('.monthly-btn')
 const yearly = document.querySelector('.yearly-btn')
-const pay = document.querySelector('.pay-btn')
+const pay = document.querySelector('.pay-link')
 const info_user = document.querySelector('.info_user')
 const dropdown_menu = document.querySelector('.dropdown_menu')
 const open_menu_btn = document.getElementById('open_menu_btn')
