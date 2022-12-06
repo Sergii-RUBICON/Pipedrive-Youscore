@@ -220,7 +220,7 @@ async function timestampToNormalDate (date) {
         day: 'numeric',
         timezone: 'UTC'
     }
-    return new Date(date).toLocaleDateString("uk-UA", options)
+    return new Date(date).toLocaleDateString()
 }
 
 
