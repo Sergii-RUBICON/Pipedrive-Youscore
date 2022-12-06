@@ -5,11 +5,43 @@ async function checkSub(req, res) {
     const obj = JSON.parse(req.rawBody)
     console.log(obj)
 
-    if (obj.transactionStatus === 'Approved') {
+    const userSub = await user.findUserByPortal(obj.clientFields[0]?.value)
 
-        const userSub = await user.findUserByPortal(obj.clientFields[0].value)
-        const calculateSub = await calculateDate(obj.products[0].name, userSub.subscription_end)
-        await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, calculateSub)
+    if (userSub) {
+        if (obj.transactionStatus === 'Approved') {
+            console.log('Starting update sub date')
+
+            const calculateSub = await calculateDate(obj.products[0].name, userSub.subscription_end)
+            await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, calculateSub)
+
+            let resObj = {
+                orderReference: obj.orderReference,
+                status: "accept",
+                time: Date.now(),
+                signature: "",
+            }
+            console.log(resObj)
+            const resHMC5 = await hmacmd5(resObj)
+            console.log(resHMC5)
+
+            res.end(resHMC5)
+        } else {
+
+            let resObj = {
+                orderReference: obj.orderReference,
+                status: "accept",
+                time: Date.now(),
+                signature: "",
+            }
+
+            console.log(resObj)
+            const resHMC5 = await hmacmd5(resObj)
+            console.log(resHMC5)
+
+            res.end()
+        }
+    } else if (!userSub) {
+        console.log('Value on custom field not correct, pls try again')
 
         let resObj = {
             orderReference: obj.orderReference,
@@ -20,10 +52,6 @@ async function checkSub(req, res) {
         console.log(resObj)
         const resHMC5 = await hmacmd5(resObj)
         console.log(resHMC5)
-
-        res.end(resHMC5)
-    } else {
-        res.end()
     }
 }
 
