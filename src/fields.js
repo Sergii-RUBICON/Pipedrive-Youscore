@@ -214,13 +214,8 @@ async function updateFields (companyNameY, nameDirectorY, shortNameY, infoForCon
 
 
 async function timestampToNormalDate (date) {
-    const options = {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        timezone: 'UTC',
-    }
-    return new Date(date).toLocaleDateString('ru-RU')
+    const parsed = Date.parse(date)
+    return new Date(parsed).toLocaleDateString('ru-RU')
 }
 
 
