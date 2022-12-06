@@ -218,9 +218,9 @@ async function timestampToNormalDate (date) {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
-        timezone: 'UTC'
+        timezone: 'UTC',
     }
-    return new Date(date).toLocaleDateString('uk_UA')
+    return new Date(date).toLocaleDateString('ru-RU')
 }
 
 
