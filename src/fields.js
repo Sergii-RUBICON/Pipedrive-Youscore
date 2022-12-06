@@ -5,6 +5,7 @@ const pipedrive = require('pipedrive')
 const Api = require('./api.js')
 const defaultClient = pipedrive.ApiClient.instance
 const shevchenko = require('shevchenko')
+const moment = require('moment')
 
 //### Pipedrive api key ###\\
 defaultClient.authentications.api_key.apiKey = process.env.PIPEDRIVE_API_KEY
@@ -214,7 +215,7 @@ async function updateFields (companyNameY, nameDirectorY, shortNameY, infoForCon
 
 
 async function timestampToNormalDate (date) {
-    return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`
+    return moment(date).format('DD.MM.YYYY')
 }
 
 
