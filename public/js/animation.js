@@ -20,7 +20,6 @@ pay.href = 'https://secure.wayforpay.com/button/bc6d17ab2ca82'
 
 monthly.addEventListener('click', () => {
     yearly.classList.remove('active')
-    pay.href.remove('https://secure.wayforpay.com/button/bc6d17ab2ca82')
     monthly.classList.add('active')
     pay.href.add('https://secure.wayforpay.com/button/b69c1c9486965')
     price.textContent = monthlyPrice
@@ -30,7 +29,6 @@ monthly.addEventListener('click', () => {
 
 yearly.addEventListener('click', () => {
     monthly.classList.remove('active')
-    pay.href.remove('https://secure.wayforpay.com/button/b69c1c9486965')
     yearly.classList.add('active')
     pay.href.add('https://secure.wayforpay.com/button/bc6d17ab2ca82')
     price.textContent = yearlyPrice
