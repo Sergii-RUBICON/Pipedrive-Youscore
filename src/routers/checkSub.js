@@ -5,7 +5,7 @@ async function checkSub(req, res) {
     const obj = JSON.parse(req.rawBody)
     console.log(obj)
 
-    const userSub = await user.findUserByPortal(obj.clientFields[0]?.value)
+    const userSub = await user.findUserByPortal(obj?.clientFields[0]?.value)
 
     if (userSub) {
         if (obj.transactionStatus === 'Approved') {
@@ -79,7 +79,4 @@ async function calculateDate (subType, time) {
 module.exports = checkSub
 
 
-/*
-606f
- */
 
