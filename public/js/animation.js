@@ -19,6 +19,7 @@ price.textContent = yearlyPrice
 monthly.addEventListener('click', () => {
     yearly.classList.remove('active')
     monthly.classList.add('active')
+    monthly.href.update('https://secure.wayforpay.com/button/b69c1c9486965')
     price.textContent = monthlyPrice
     priceEnding.classList.remove('sale')
     price_desc.textContent = 'Оплачується щомісяця'
@@ -27,6 +28,7 @@ monthly.addEventListener('click', () => {
 yearly.addEventListener('click', () => {
     monthly.classList.remove('active')
     yearly.classList.add('active')
+    monthly.href.update('https://secure.wayforpay.com/button/bc6d17ab2ca82')
     price.textContent = yearlyPrice
     priceEnding.classList.add('sale')
     price_desc.textContent = 'Оплачується щороку'
