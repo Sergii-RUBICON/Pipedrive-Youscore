@@ -14,7 +14,7 @@ async function checkSub(req, res) {
             const calculateSub = await calculateDate(obj.products[0].name, userSub.subscription_end)
             await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, calculateSub)
 
-            let resObj = `${obj.orderReference};"accept";${Date.now()};""`
+            let resObj = `${obj.orderReference} "accept" ${Date.now()} ""`
 
             console.log(resObj)
             const resHMC5 = await hmacmd5(resObj)
@@ -67,3 +67,4 @@ module.exports = checkSub
 
 
 //97ce
+//731b
