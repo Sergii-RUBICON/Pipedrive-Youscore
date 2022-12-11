@@ -34,7 +34,7 @@ async function checkSub(req, res) {
     } else if (!userSub) {
         console.log('Value on custom field not correct, pls try again')
 
-        let resObj = `${obj.orderReference};"accept";${Date.now()}`
+        let resObj = `${obj.orderReference};"accept";${Date.now()};""`
 
         console.log(resObj)
         const resHMC5 = await hmacmd5(resObj)
@@ -66,4 +66,4 @@ async function calculateDate (subType, time) {
 module.exports = checkSub
 
 
-
+//97ce
