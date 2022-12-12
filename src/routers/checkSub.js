@@ -10,34 +10,53 @@ async function checkSub(req, res) {
     if (userSub) {
         if (obj.transactionStatus === 'Approved') {
             console.log('Starting update sub date')
-
             const calculateSub = await calculateDate(obj.products[0].name, userSub.subscription_end)
             await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, calculateSub)
 
-            let resObj = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
-            console.log(resObj)
-            const resHMC5 = await hmacmd5(resObj)
-            console.log(resHMC5)
+            const str1 = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
+            console.log(str1)
+            const md5Str = await hmacmd5(str1)
+            console.log(md5Str)
 
-            res.end(resHMC5)
+            const resObj = {
+                orderReference: obj.orderReference,
+                status: "accept",
+                time: Date.now(),
+                signature: md5Str,
+            }
+            console.log(resObj)
+            res.end(resObj)
         } else {
+            const str2 = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
+            console.log(str2)
+            const md5Str = await hmacmd5(str2)
+            console.log(md5Str)
 
-            let resObj = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
-
+            const resObj = {
+                orderReference: obj.orderReference,
+                status: "accept",
+                time: Date.now(),
+                signature: md5Str,
+            }
             console.log(resObj)
-            const resHMC5 = await hmacmd5(resObj)
-            console.log(resHMC5)
-
-            res.end()
+            res.end(resObj)
         }
     } else if (!userSub) {
         console.log('Value on custom field not correct, pls try again')
 
-        let resObj = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
+        const str3 = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
+        console.log(str3)
+        const md5Str = await hmacmd5(str3)
+        console.log(md5Str)
 
+        const resObj = {
+            orderReference: obj.orderReference,
+            status: "accept",
+            time: Date.now(),
+            signature: md5Str,
+        }
         console.log(resObj)
-        const resHMC5 = await hmacmd5(resObj)
-        console.log(resHMC5)
+        res.end(resObj)
     }
 }
 
