@@ -25,7 +25,7 @@ async function checkSub(req, res) {
                 signature: md5Str,
             }
             console.log(resObj)
-            res.end(resObj)
+            res.json(resObj)
         } else {
             const str2 = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
             console.log(str2)
@@ -39,7 +39,7 @@ async function checkSub(req, res) {
                 signature: md5Str,
             }
             console.log(resObj)
-            res.end(resObj)
+            res.json(resObj)
         }
     } else if (!userSub) {
         console.log('Value on custom field not correct, pls try again')
@@ -56,7 +56,7 @@ async function checkSub(req, res) {
             signature: md5Str,
         }
         console.log(resObj)
-        res.end(resObj)
+        res.json(resObj)
     }
 }
 
