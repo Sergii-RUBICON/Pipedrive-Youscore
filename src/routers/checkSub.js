@@ -64,7 +64,7 @@ async function checkSub(req, res) {
 
 async function hmacmd5(string, secret = '59d84bc4cc1c61ea961c75688dd9105eb852128b') {
     const hash = createHmac('md5',secret)
-        .update(string+";")
+        .update(string)
         .digest('hex');
     return hash
 }
@@ -85,4 +85,4 @@ module.exports = checkSub
 
 
 
-//36ad
+//5866
