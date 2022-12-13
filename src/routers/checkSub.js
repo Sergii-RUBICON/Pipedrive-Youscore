@@ -6,6 +6,7 @@ async function checkSub(req, res) {
     console.log(obj)
 
     const userSub = await user.findUserByPortal(obj?.clientFields[0]?.value)
+    const time = Date.now()
 
     if (userSub) {
         if (obj.transactionStatus === 'Approved') {
@@ -13,21 +14,22 @@ async function checkSub(req, res) {
             const calculateSub = await calculateDate(obj.products[0].name, userSub.subscription_end)
             await user.findOneAndUpdateStatusTime(obj.clientFields[0].value, calculateSub)
 
-            const str1 = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
+            const str1 = obj.orderReference + ";" + "accept" + ";" + time
             console.log(str1)
+
             const md5Str = await hmacmd5(str1)
             console.log(md5Str)
 
             const resObj = {
                 orderReference: obj.orderReference,
                 status: "accept",
-                time: Date.now(),
+                time: time,
                 signature: md5Str,
             }
             console.log(resObj)
             res.json(resObj)
         } else {
-            const str2 = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
+            const str2 = obj.orderReference + ";" + "accept" + ";" + time
             console.log(str2)
             const md5Str = await hmacmd5(str2)
             console.log(md5Str)
@@ -35,7 +37,7 @@ async function checkSub(req, res) {
             const resObj = {
                 orderReference: obj.orderReference,
                 status: "accept",
-                time: Date.now(),
+                time: time,
                 signature: md5Str,
             }
             console.log(resObj)
@@ -44,7 +46,7 @@ async function checkSub(req, res) {
     } else if (!userSub) {
         console.log('Value on custom field not correct, pls try again')
 
-        const str3 = obj.orderReference + ";" + "accept" + ";" + obj.createdDate
+        const str3 = obj.orderReference + ";" + "accept" + ";" + time
         console.log(str3)
         const md5Str = await hmacmd5(str3)
         console.log(md5Str)
@@ -52,7 +54,7 @@ async function checkSub(req, res) {
         const resObj = {
             orderReference: obj.orderReference,
             status: "accept",
-            time: Date.now(),
+            time: time,
             signature: md5Str,
         }
         console.log(resObj)
@@ -84,5 +86,4 @@ async function calculateDate (subType, time) {
 module.exports = checkSub
 
 
-
-//5866
+//3518
