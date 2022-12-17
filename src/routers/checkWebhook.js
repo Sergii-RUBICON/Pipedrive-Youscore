@@ -109,7 +109,6 @@ async function checkWebhook(req, res) {
         console.log(`Виникла помилка при підключенні: ${e}`)
         res.end()
     }
-
 }
 
 
