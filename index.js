@@ -12,16 +12,11 @@ const mainRouter = require('./src/routers/main')
 const setupExpress = require('./src/setupExpress')
 const fields = require('./src/fields')
 const fs = require('fs')
-const bodyParser = require('body-parser')
+
 
 
 //### App start ###\\
 const app = express()
-
-app.use((req, res, next) => {
-    console.log('Request to ' + req.url);
-    next()
-})
 
 //### Connect to DB ###\\
 connectMongo.main()
@@ -38,7 +33,6 @@ app.use(async (req, res, next) => {
     req.user = await User.findUserByPortal(process.env.companyDomain)
     next()
 })
-
 
 
 app.get('/auth/pipedrive', passport.authenticate('pipedrive'))
@@ -65,7 +59,7 @@ passport.use(
             const userInfo = await api.getUser(accessToken);
             const findCollection = await User.findUserByPortal(userInfo.data.company_domain)
             if (!findCollection) {
-                const user = await User.updateUser(
+                await User.updateUser(
                     userInfo.data.company_domain,
                     userInfo.data.name,
                     userInfo.data.company_name,
@@ -78,7 +72,6 @@ passport.use(
 
             } else {
                 await User.findUserByPortalAndUpdate(userInfo.data.company_domain, userInfo.data.name, userInfo.data.company_name, userInfo.data.icon_url, accessToken, refreshToken)
-
             }
 
             fs.writeFileSync(filepath, userInfo.data.company_domain)
@@ -88,8 +81,6 @@ passport.use(
         }
     )
 )
-
-
 
 
 //### Load main menu ###\\

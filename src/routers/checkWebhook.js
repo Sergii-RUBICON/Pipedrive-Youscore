@@ -21,7 +21,7 @@ async function checkWebhook(req, res) {
         const currentEDRPO = current[dbEDRPO]
         console.log(`ЄДРПОУ після зміни: ${currentEDRPO}`)
 
-        if (currentEDRPO != previousEDRPO) {
+        if (currentEDRPO !== previousEDRPO) {
             console.log('Зміна відбулася у полі ЄДРПОУ')
             let connectStatus = null
             let companyNameUse = null
@@ -90,6 +90,8 @@ async function checkWebhook(req, res) {
                     }
                 }
                 else {
+                    connectStatus = false
+                    await fields.addNote(connectStatus, currentEDRPO, orgID)
                     console.log('Некоректна к-ть символів при змінні поля, має бути 8(ТОВ) або 10(ФОП)')
                     res.end()
                 }

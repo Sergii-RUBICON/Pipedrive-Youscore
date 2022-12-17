@@ -3,7 +3,7 @@
 const db = require('./db/user')
 const pipedrive = require('pipedrive')
 const Api = require('./api.js')
-const defaultClient = pipedrive.ApiClient.instance
+const defaultClient = new pipedrive.ApiClient()
 const shevchenko = require('shevchenko')
 const moment = require('moment')
 

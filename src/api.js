@@ -18,17 +18,6 @@ async function getUser(accessToken) {
     return userInfo;
 }
 
-async function getFields(accessToken) {
-    const requestOptions = {
-        uri: `https://api.pipedrive.com/v1/organizationFields?limit=100`,
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${accessToken}`
-        },
-        json: true
-    }
-    return await request(requestOptions)
-}
 
 //### Get info from Youscore ###\\
 function checkConnect(apiKey) {
