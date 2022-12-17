@@ -170,7 +170,6 @@ async function addNote (connectStatus, currentEDRPO, orgID, subStatus) {
             }
         const api = new pipedrive.NotesApi()
         await api.addNote(note)
-        return
     }
 
     else if (connectStatus === false) {
@@ -181,7 +180,6 @@ async function addNote (connectStatus, currentEDRPO, orgID, subStatus) {
             }
         const api = new pipedrive.NotesApi()
         await api.addNote(note)
-        return
     }
     else if (connectStatus === true) {
         const note =
@@ -191,7 +189,6 @@ async function addNote (connectStatus, currentEDRPO, orgID, subStatus) {
             }
         const api = new pipedrive.NotesApi()
         await api.addNote(note)
-        return
     }
 }
 
@@ -225,9 +222,6 @@ async function checkSubStatus (date) {
 
     if (dateNow > dateSub) {
         return "inactive"
-    }
-    else {
-        return
     }
 }
 

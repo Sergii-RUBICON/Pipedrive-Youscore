@@ -26,7 +26,7 @@ async function getFields(accessToken) {
             'Authorization': `Bearer ${accessToken}`
         },
         json: true
-    };
+    }
     return await request(requestOptions)
 }
 
