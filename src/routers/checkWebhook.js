@@ -103,7 +103,6 @@ async function checkWebhook(req, res) {
             console.log(`К-ть повторень вебхука: ${req.body.retry}`)
             res.end()
         }
-
         res.end()
 
     } catch (e) {
