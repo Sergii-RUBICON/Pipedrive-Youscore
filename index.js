@@ -11,7 +11,9 @@ const connectMongo = require('./src/db/connection')
 const mainRouter = require('./src/routers/main')
 const setupExpress = require('./src/setupExpress')
 const fields = require('./src/fields')
-const fs = require('fs')
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
 
 
 
@@ -167,4 +169,13 @@ app.use('/public', express.static(__dirname + '/public'))
 
 setupExpress(express)
 
-app.listen(process.env.PORT || 3000, () => console.log(`🟢 App has started. \n🔗 Live URL: https://app.rubicon.tips`))
+const cert = fs.readFileSync('cert/cert.pem', 'utf8')
+const key = fs.readFileSync('cert/privkey.pem', 'utf8')
+const credentials = { cert, key }
+const httpServer = http.createServer(app)
+const httpsServer = https.createServer(credentials, app)
+
+http.listen(80)
+https.listen(443, () => console.log(`🟢 App has started.\n🔗 Live URL: https://app.rubicon.tips`))
+
+// app.listen(process.env.PORT || 3000, () => console.log(`🟢 App has started. \n🔗 Live URL: https://app.rubicon.tips`))
