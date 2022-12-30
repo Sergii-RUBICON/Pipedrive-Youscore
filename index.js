@@ -179,6 +179,5 @@ const httpsServer = https.createServer(credentials, app)
 httpServer.listen(80)
 httpsServer.listen(443, () => console.log(`🟢 App has started.\n🔗 Live URL: https://app.rubicon.tips`))
 
-
 //app.listen(process.env.PORT || 3000, () => console.log(`🟢 App has started. \n🔗 Live URL: https://app.rubicon.tips`))
 
