@@ -169,7 +169,6 @@ app.use('/public', express.static(__dirname + '/public'))
 
 setupExpress(express)
 
-
 const cert = fs.readFileSync('cert/cert.pem', 'utf8')
 const key = fs.readFileSync('cert/privkey.pem', 'utf8')
 const credentials = { cert, key }
@@ -179,5 +178,4 @@ const httpsServer = https.createServer(credentials, app)
 httpServer.listen(80)
 httpsServer.listen(443, () => console.log(`🟢 App has started.\n🔗 Live URL: https://app.rubicon.tips`))
 
-//app.listen(process.env.PORT || 3000, () => console.log(`🟢 App has started. \n🔗 Live URL: https://app.rubicon.tips`))
-
+// app.listen(process.env.PORT || 3000, () => console.log(`🟢 App has started. \n🔗 Live URL: https://app.rubicon.tips`))
