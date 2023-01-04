@@ -1,11 +1,12 @@
 
 node_modules
 npm-debug.log
+cert
 
 # System, IDE, misc
 .DS_Store
 .idea
 .vscode
 .env
-cert
+
 
