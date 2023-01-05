@@ -6,4 +6,3 @@ module.exports = {
     callbackURL: process.env.CALLBACK_URL || '<YOUR_CALLBACK_URL>',
     pipedriveApiKey: process.env.PIPEDRIVE_API_KEY || '<YOUR_API_KEY>',
 };
-
